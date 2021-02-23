@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--<item android:drawable="@drawable/shape_round_corner_rect_instruction" android:state_pressed="true" />-->
+    <!-- <item android:drawable="@drawable/disease_check_box_click" android:state_selected="true" />
+     <item android:drawable="@drawable/disease_check_box" android:state_selected="false" />
+     <item android:drawable="@drawable/disease_check_box_disable" android:state_selected="false" android:state_activated="false" />
+     <item android:drawable="@drawable/disease_check_box" android:state_activated="true" />
+     <item android:drawable="@drawable/disease_check_box_click" android:state_selected="true" android:state_enabled="true"/>
+     <item android:drawable="@drawable/disease_check_box" android:state_selected="false" android:state_enabled="false" />
+     <item android:drawable="@drawable/disease_check_box" />-->
+
+    <item android:drawable="@drawable/disease_check_box_click" android:state_enabled="true" android:state_selected="true" />
+    <item android:drawable="@drawable/disease_check_box_disable" android:state_enabled="false" android:state_selected="true" />
+    <item android:drawable="@drawable/disease_check_box" android:state_enabled="true" android:state_selected="false" />
+    <item android:drawable="@drawable/disease_check_box" />
+
+</selector>

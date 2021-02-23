@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white_text">#FFFFFF</color>
+    <color name="new_visit">#F7F8F9</color>
+    <color name="black_text">#000000</color>
+    <color name="white_deselect_text">#d6f0ff</color>
+    <color name="black_deselect_text">#0a2433</color>
+    <color name="login_white_bg">#CCFFFFFF</color>
+    <color name="red_color">#FF0000</color>
+    <color name="text_color">#444444</color>
+    <color name="hint_color">#b1b1b1</color>
+    <color name="text_blue">#33b5ff</color>
+    <color name="grid_border">#FFC8C8C8</color>
+    <color name="header_blue_color">#33b5ff</color>
+    <color name="patient_queue_bg">#f0f3f4</color>
+    <color name="drawer_divider_line">#9f9f9f</color>
+    <color name="patient_queue_green_color">#388f38</color>
+    <color name="patient_queue_red_color">#ba2a2a</color>
+    <color name="color_complaints_tab_text_enabled">#b1b1b1</color>
+    <color name="color_complaints_tab_text_disabled">#33b5ff</color>
+    <color name="color_complaints_tab_text_pressed">#33b5ff</color>
+    <color name="color_text_grey">#777777</color>
+    <color name="color_grey_text_box">#F7F7F7</color>
+    <color name="color_blue_text_box">#F3FAFD</color>
+    <color name="color_text_box_stroke">#959595</color>
+    <color name="color_divider">#9F9F9F</color>
+    <color name="faint_pink">#ff8b88</color>
+    <color name="faint_blue">#4b8df8</color>
+    <color name="faint_family_blue">#6bc9fe</color>
+    <color name="color_dialog_title">#444444</color>
+    <color name="color_text_blue_pressed">#599ABF</color>
+    <color name="color_patient_visits_background">#EFF3F4</color>
+    <color name="color_patient_visits_list_parent_background">#778489</color>
+
+
+    <color name="color_ebeae7">#ebeae7</color>
+    <color name="color_778489">#778489</color>
+    <color name="color_727272">#727272</color>
+    <color name="color_33B5FF">#33B5FF</color>
+    <color name="color_AAAEB0">#AAAEB0</color>
+    <color name="color_7E7E7E">#7E7E7E</color>
+    <color name="color_C3C3C3">#C3C3C3</color>
+
+    <color name="color_txt">#c2c2c2</color>
+    <color name="disabled_allergy">#D8D8D8</color>
+    <color name="custom_progress_background">#ff3c3a3b</color>
+    <color name="custom_progress_blue_progress">#ff0099cc</color>
+
+    <color name="prescription_selected">#778489</color>
+    <color name="instruction_selected">#f4fafd</color>
+    <color name="instruction_border_selected">#898989</color>
+    <color name="quantity_text_color">#71dfff</color>
+    <color name="add_new_medicine_btn_color">#33b5ff</color>
+
+    <color name="blood_group_color">#b8d3ff</color>
+    <color name="blood_group_bg_color">#abb4ba</color>
+    <color name="blood_group_selected_color">#ffffff</color>
+    <color name="blood_group_selected_bg_color">#ff0000</color>
+    <color name="new_disease_btn_bg_color">#f6f6f6</color>
+    <color name="disabled_effect_color">#b9e6ff</color>
+
+    <color name="color_464646">#464646</color>
+</resources>

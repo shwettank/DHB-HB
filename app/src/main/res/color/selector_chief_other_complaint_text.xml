@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/color_text_grey" android:state_selected="false" />
+    <!-- Button Pressed -->
+    <item android:color="@color/white_text" android:state_selected="true" />
+    <!-- Button Default Image -->
+    <item android:color="@color/color_text_grey" />
+</selector>

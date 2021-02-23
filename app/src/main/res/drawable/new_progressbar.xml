@@ -1,0 +1,14 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@android:id/background">
+        <selector>
+            <item android:drawable="@drawable/progress_bar_bg_new" />
+        </selector>
+    </item>
+    <item android:id="@android:id/progress">
+        <selector>
+            <item android:drawable="@drawable/progress_bar_with_bg"/>
+        </selector>
+    </item>
+
+</layer-list>

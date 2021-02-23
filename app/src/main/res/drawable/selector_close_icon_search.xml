@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/search_close_button" android:state_enabled="false" />
+    <!-- Button Pressed -->
+    <item android:drawable="@drawable/search_close_button_click" android:state_pressed="true" />
+    <!-- Button Default Image -->
+    <item android:drawable="@drawable/search_close_button" />
+
+</selector>

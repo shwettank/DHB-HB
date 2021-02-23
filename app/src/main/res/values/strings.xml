@@ -1,0 +1,1073 @@
+<resources>
+    <!--<string name="app_name">DHB</string>-->
+    <string name="app_name">DHB OPD</string>
+    <!--<string name="app_name">DHB Front Desk</string>-->
+    <string name="action_settings">Settings</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="star"> *</string>
+    <string name="crop">Crop</string>
+    <!--Sign In-->
+    <string name="mobile">Mobile</string>
+    <string name="mobile_hindi">मोबाइल</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="alert_enter_Mobile">Please enter Your Mobile Number.</string>
+    <string name="alert_enter_password">Please enter Your Password.</string>
+    <string name="alert_password_length_should_be_5_digit">Password should be of 5 letter.</string>
+    <string name="delete_sample_confirmation_msg">Are you sure you want to delete?</string>
+    <!--Menu list-->
+    <string name="patient_queue">Patient Queue</string>
+    <string name="referred_to_me">Referred to me</string>
+    <string name="on_hold_patient_queue">Hold Visit Queue</string>
+    <string name="change_password">Change Password</string>
+    <string name="sync_data">Sync Data</string>
+    <string name="suggestion">Suggestion</string>
+    <string name="doctor_timing">Doctors Timing</string>
+    <string name="settings">Settings</string>
+    <string name="help">Help</string>
+    <string name="logout">Sign Out</string>
+
+    <!--Patient Queue-->
+    <string name="present">Present</string>
+    <string name="present_hindi">रोगी कतार</string>
+    <string name="examined">Examined</string>
+    <string name="examined_hindi">जाँच किये गए</string>
+    <string name="no_show">No Show</string>
+    <string name="no_show_hindi">उपलब्ध नहीं</string>
+    <string name="undo">Undo</string>
+    <string name="undo_hindi">पूर्ववत करें</string>
+    <string name="send_to_doctor">Send To Doctor</string>
+    <string name="send_to_doctor_hindi">डॉक्टर के पास भेजे</string>
+    <string name="non_register">Non Registered</string>
+    <string name="alert_register_send_to_doctor">Please register a patient in order to proceed. </string>
+    <string name="male">Male</string>
+    <string name="male_hindi">Male\nपुरुष</string>
+    <string name="female">Female</string>
+    <string name="female_hindi">Female\nमहिला</string>
+    <string name="no_record">No patient in visits.</string>
+    <string name="no_record_in_queue">No patient in queue.</string>
+    <string name="no_records">No record.</string>
+    <string name="no_search_record">No Search result found</string>
+    <string name="zero">0</string>
+    <string name="patient_visit_hindi">रोगी की भेट</string>
+    <string name="patient_visit">View/Add Patient Visits</string>
+    <string name="collect_samples">Collect Samples</string>
+    <string name="pathology">Pathology</string>
+    <string name="doctor">DOCTOR</string>
+    <string name="already_in_queue">Patient already present in queue.</string>
+
+    <!--Search-->
+    <string name="search_patient">Search Patient</string>
+    <string name="search_state">Search State</string>
+    <string name="search_district">Search District</string>
+    <string name="search_by_name_mobile_patientId">Search Patient by Name/ Mobile/ Patient Id/ HIN</string>
+
+    <!--ChangePassword-->
+    <string name="save">Save</string>
+    <string name="upload">Upload</string>
+    <string name="old_password">Old Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="alert_enter_old_password">Please enter your Old Password.</string>
+    <string name="alert_enter_new_password">Please enter your New Password.</string>
+    <string name="alert_enter_confirm_password">Please Confirm your Password.</string>
+    <string name="alert_password_not_match">Entered New and Confirm Password do not match.</string>
+    <string name="alert_new_password_length_should_be_5_letter">New Password should be of 5 letter.</string>
+    <string name="alert_must_contain_atleast_1_Special_1_digit">Password should be combination of Numbers and Special Characters only.</string>
+    <string name="alert_enter_first_name">Please enter First Name.</string>
+    <string name="alert_invalid_first_name">Please enter valid First Name.</string>
+    <string name="alert_profile_image">Please upload Profile photo.</string>
+    <string name="alert_enter_year">Please enter valid Years.</string>
+    <string name="alert_enter_months">Please enter valid Months.</string>
+    <string name="alert_enter_days">Please enter valid Days.</string>
+    <string name="alert_enter_suggestion">Please add your Suggestion.</string>
+    <string name="alert_enter_last_name">Please enter Last Name.</string>
+    <string name="alert_invalid_last_name">Please enter valid Last Name.</string>
+    <string name="alert_enter_state">Please enter State.</string>
+    <string name="alert_enter_district">Please enter District.</string>
+    <string name="alert_enter_taluka">Please enter Taluka/Tahasil.</string>
+    <string name="alert_enter_area">Please enter Place.</string>
+    <string name="alert_enter_doctor_name">Please enter Doctor Name.</string>
+    <string name="alert_enter_address">Please enter Address.</string>
+    <string name="alert_enter_pin_code">Please enter Pin code.</string>
+    <string name="alert_enter_mobile_name">Please enter Mobile Number.</string>
+    <string name="alert_enter_dob_name">Please enter Date of Birth or Age.</string>
+    <!--ForgotPassword-->
+    <string name="txt_forgot_password">Forgot Password</string>
+    <string name="alert_enter_mobile">Please enter your Mobile Number. </string>
+    <string name="alert_invalid_mobile">Please enter Valid Mobile Number.</string>
+    <!--<string name="patient_registration">Patient Registration</string>-->
+    <string name="patient_consent_form">Registration Form</string>
+    <!--LogOut-->
+    <string name="alert_you_want_to_logOut">Are you sure you want to Sign out?</string>
+    <string name="alert_you_want_to_signOut">Data synced successfully. Do you want to Sign Out?</string>
+    <!--Patient History-->
+    <string name="surgical_history">Surgical History</string>
+    <string name="patient_history">Patient History</string>
+    <string name="family_history">Family History</string>
+    <string name="medical_surgical_history">Medical/Surgical History</string>
+    <string name="new_disease">+ New Disease</string>
+    <string name="disease">Disease</string>
+    <string name="father">Father</string>
+    <string name="mother">Mother</string>
+    <string name="patient_habits">Patient Habits</string>
+
+    <string name="name_of_surgery">Name of Surgery</string>
+    <string name="description">Description</string>
+    <string name="date_of_surgery">Date of Surgery</string>
+    <string name="add_to_list">Add to List</string>
+    <string name="date_added">Date Added</string>
+    <string name="surgery">Surgery</string>
+
+    <!--Patient Observation-->
+    <string name="patient_observation">Patient Observation</string>
+    <string name="observation">Observation</string>
+    <!--API-->
+    <string name="progress_message_authenticating_please_wait">Loading please wait...</string>
+    <string name="image_name">Image Name</string>
+    <string name="add_image">Add Image</string>
+    <string name="scan_suggestion">Scan Suggestion</string>
+    <string name="add_prescription">Add Prescription</string>
+    <string name="add_lab_report">Add Lab Report</string>
+    <string name="lab_report_name">Lab Report Name</string>
+    <string name="prescription_name">Prescription Name</string>
+    <string name="most_frequent">Most Frequent</string>
+    <string name="all">All</string>
+    <string name="diagnosis">Diagnosis</string>
+    <string name="icd_code_description">ICD Code Description</string>
+    <string name="icd_code">ICD Code</string>
+    <string name="infectious_disease">Infectious Disease</string>
+    <string name="chronic_disease">Chronic Disease</string>
+    <string name="comments">Comments</string>
+    <string name="physical_parameters">Physical Parameters</string>
+    <string name="blood_pressure">Blood Pressure</string>
+    <string name="blood_glucose">Blood Glucose</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+    <string name="success_blood_sugar_hba1c">Blood Sugar - HbA1c saved successfully.</string>
+    <string name="height_weight">Height &amp; Weight</string>
+    <string name="bmi">BMI</string>
+    <string name="temp">Temp</string>
+    <string name="pulse">Pulse</string>
+    <string name="stolicLying">Stolic</string>
+    <string name="diastolicLying">Diastolic</string>
+    <string name="pp">PP</string>
+    <string name="random_sugar">Random Sugar</string>
+    <string name="fasting">Fasting</string>
+    <string name="hdl1">HDL</string>
+    <string name="ldl1">LDL</string>
+    <string name="triglyceride">Triglycerides</string>
+    <string name="cholesterol">Cholesterol</string>
+    <string name="kgs">Kgs</string>
+    <string name="cms">cms</string>
+    <string name="kgpermsq">Kg/m</string>
+    <string name="farenhiet">℉</string>
+    <string name="celsius">℃</string>
+    <string name="bpm">bpm</string>
+    <string name="mmhg">mmHg</string>
+    <string name="mgdl">mg/dL</string>
+    <string name="immunization_schedule">Indradhanushya</string>
+    <string name="patient_immunization">Patient Immunization</string>
+    <string name="vaccine">Vaccine</string>
+    <string name="date">Date</string>
+    <string name="batchno">Batch No.</string>
+    <string name="dose">Dose</string>
+    <string name="expirydate">Expiry Date</string>
+    <string name="addtolist">Add to List</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="cancel">Cancel</string>
+    <string name="suggestion_text">Let us know how we can improve your experience with DHB</string><string name="alert_message_confirm_exit">Are you sure you want to exit the application?
+    </string>
+    <string name="document_name">Document Name</string>
+    <string name="document_date">Document Date</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="filter">Filter</string>
+    <string name="not_available">NA</string>
+    <string name="loading_image">Loading Image...</string>
+
+    <!--Registartion Form-->
+    <string name="patient_id">Patient Id</string>
+    <string name="hosp_ref_id">HIN</string>
+    <string name="first_name">First Name</string>
+    <string name="first_name_hindi">पहला नाम</string>
+    <string name="change_photo">Change\n Photo</string>
+    <string name="middle_name">Middle Name</string>
+    <string name="middle_name_hindi">मध्य नाम</string>
+    <string name="last_name">Last Name</string>
+    <string name="last_name_hindi">अंतिम नाम</string>
+    <string name="optional">Optional</string>
+    <string name="optional_hindi">ऐच्छिक</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="date_of_birth_hindi">जन्मतिथि</string>
+    <string name="dd_mmm_yy">DD-MMM-YY</string>
+    <string name="or">OR</string>
+    <string name="or_hindi">/या</string>
+    <string name="age">Age</string>
+    <string name="age_hindi">आयु</string>
+    <string name="yy">YY</string>
+    <string name="y">Y</string>
+    <string name="mm">MM</string>
+    <string name="m">M</string>
+    <string name="dd">DD</string>
+    <string name="d">D</string>
+    <string name="gender">Gender\n लिंग</string>
+    <string name="gender_1">Gender</string>
+    <string name="gender_hindi">लिंग</string>
+    <string name="other">Other</string>
+    <string name="other_hindi">Other\nअन्य</string>
+    <string name="plan_type">Plan Type</string>
+    <string name="plan_type_hindi">योजना के प्रकार</string>
+    <string name="silver">Silver</string>
+    <string name="gold">Gold</string>
+    <string name="state">State</string>
+    <string name="state_hindi">राज्य</string>
+    <string name="district">District</string>
+    <string name="select_district">Select District</string>
+    <string name="district_hindi">जिला</string>
+    <string name="taluka">Taluka</string>
+    <string name="taluka_tahasil">Taluka/Tahasil</string>
+    <string name="taluka_hindi">तालुका</string>
+    <string name="village">Village</string>
+    <string name="village_hindi">गाँव</string>
+    <string name="area">Place</string>
+    <string name="area_hindi">क्षेत्र</string>
+    <string name="address_1">Address Line 1</string>
+    <string name="address_1_hindi">पता पंक्ति 1</string>
+    <string name="address_2">Address Line 2</string>
+    <string name="address_2_hindi">पता पंक्ति 2</string>
+    <string name="pin_code">Pin code</string>
+    <string name="pin_code_hindi">पिन कोड</string>
+    <string name="name_verification">Name Verification</string>
+    <string name="name">Name</string>
+    <string name="name_hindi"> नाम</string>
+
+    <string name="mr">MR</string>
+    <string name="mr_hindi">एम.आर.</string>
+
+    <string name="suggetion_hint">Please add your suggestion here</string>
+    <string name="observation_hint">Please add your observation here</string>
+    <string name="instruction_hint">Please add your instruction here</string>
+    <string name="physical_examination_hint">Please add your physical examination here</string>
+    <string name="doc_name">Set Document Name</string>
+    <string name="cheif_and_other_completaints"><![CDATA[Chief & Other Complaints]]></string>
+    <string name="lab_reports">Lab Reports</string>
+    <string name="images">Images (Non DIACOM)</string>
+    <string name="patient_photo">Patient Photo</string>
+    <string name="ears">Ears</string>
+    <string name="eye">Eye</string>
+    <string name="head">Head</string>
+    <string name="kidney">Kidney</string>
+    <string name="legs">Legs</string>
+    <string name="lungs">Lungs</string>
+    <string name="nose">Nose</string>
+    <string name="stomach">Stomach</string>
+    <string name="scan_documents">Scan Document</string>
+    <string name="add_visit">Patient Visit</string>
+    <string name="send_to_doctors">Send To Doctors</string>
+    <string name="send_to_reception">Send To Reception</string>
+    <string name="send_to_department">Send To Department</string>
+    <string name="add_visit_hindi">रोगी की भेट</string>
+    <string name="patient_profile">Patient Profile</string>
+    <!--<string name="registration_form">Registration Form</string>-->
+    <string name="new_visit">New Visit</string>
+    <string name="doctor_present_queue">Doctor\'s Queue</string>
+    <string name="chief_complaint">Chief Complaints</string>
+    <string name="other_complaint">Other Complaints</string>
+    <string name="select_description">Select Description</string>
+    <string name="prescription">Prescription</string>
+    <string name="provisional_diagnosis">Provisional Diagnosis</string>
+    <string name="general_instructions">General Instructions</string>
+    <string name="instructions">Instructions</string>
+    <string name="referred_by_doctor">Referred to Doctor</string>
+    <string-array name="visit_types">
+        <item>Chief &amp; Other Complaints</item>
+        <item>Patient Vitals</item>
+        <item>Lab Reports</item>
+        <item>Images</item>
+        <item>Lab/Clinical Orders</item>
+        <item>Diagnosis</item>
+        <item>Prescription/Medication</item>
+        <item>Patient Immunization</item>
+        <item>Patient Allergies</item>
+        <item>Patient History</item>
+        <item>Patient Habits</item>
+    </string-array>
+
+    <string name="patient_treatment">Patient Treatment</string>
+    <string name="doctors_name">Doctor\'s Name</string>
+    <string-array name="visit_types_new">
+        <!-- <item>Doctor Referral</item>
+         <item>Patient Vitals</item>
+         <item>Lab Reports</item>
+         <item>Images</item>
+         <item>Image Templates</item>
+         <item>Observations</item>
+         <item>Clinical Orders</item>
+         <item>Diagnosis</item>
+         <item>Prescription/Medication</item>
+         <item>Treatment Plan</item>
+         <item>Patient Data</item>
+         <item>Billing Instructions</item>-->
+        <item>Patient History</item>
+        <item>Patient Allergies</item>
+        <item>Chief and Other Complaint</item>
+        <item>Patient Vitals</item>
+        <item>Physical Examination</item>
+        <item>Lab Reports</item>
+        <item>Images</item>
+        <item>Diagnosis</item>
+        <item>Prescription/Medication</item>
+        <item>Clinical Order</item>
+        <item>Patient Advice</item>
+        <item>Patient Data</item>
+        <item>Doctor Referral</item>
+    </string-array>
+
+    <string-array name="patient_visit_types">
+        <item>Demographic Data</item>
+        <item>Emergency Contact Number</item>
+        <item>Insurance Info</item>
+        <!--   <item>Demographic Data</item>
+           <item>Present Address</item>
+           <item>Permanent Address</item>
+           <item>Contact (Mail and Landline)</item>
+           <item>Emergency Contact Number</item>
+           <item>Insurance Info</item>
+           <item>Allergies</item>
+           <item>Habits</item>
+           <item>Immunization</item>
+           <item>Surgical/Family History</item>
+           <item>Blood Group</item>-->
+    </string-array>
+
+    <string-array name="patient_history_types">
+        <item>Blood Group</item>
+        <item>Birth Weight</item>
+        <item>Immunization</item>
+        <item>Surgical History</item>
+        <item>Family History</item>
+        <item>Contact Information</item>
+        <item>Emergency Contact Number</item>
+        <!--<item>Insurance Info</item>-->
+    </string-array>
+
+    <string name="title_activity_doctors_timing_activitty">DoctorsTimingActivitty</string>
+
+    <string name="no_records_found">No Records Found.</string>
+    <string name="opd_timing">OPD Timing</string>
+    <string name="time_slot">Time Slot</string>
+    <string name="time_duration">Time Duration</string>
+    <string name="start_time">Start Time</string>
+    <string name="end_time">End Time</string>
+
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="day">Day</string>
+    <string name="hint_start_time">9:00 AM</string>
+    <string name="hint_end_time">5:00 PM</string>
+
+    <string-array name="icd_code_description">
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>40</item>
+
+    </string-array>
+
+    <string name="penicilium_allergy">Penicilium Allergy</string>
+    <string name="pollen_allergy">Pollen Allergy</string>
+    <string name="gluten_allergy">Gluten Allergy</string>
+    <string name="patient_allergies">Patient Allergies</string>
+    <string name="patient_advice">Patient Advice</string>
+    <string name="smoking">Smoking</string>
+    <string name="alcohol">Alcohol</string>
+    <string name="tobacco">Tobacco</string>
+    <string name="caffeine">Caffeine</string>
+    <string name="exercise">Exercise</string>
+    <string name="no_smoking">No Smoking</string>
+    <string name="no_alcohol">No Alcohol</string>
+    <string name="no_caffeine">No Caffeine</string>
+    <string name="no_exercise">No Exercise</string>
+    <string name="vegetarian">Vegetarian</string>
+    <string name="socio_economic">Socio Economic</string>
+    <string name="exercise_n_food">Exercise &amp; Food</string>
+    <string name="patient_status">Patient status</string>
+
+    <string-array name="consumption_per_day">
+        <item>1 time/day</item>
+        <item>2 times/day</item>
+        <item>3 times/day</item>
+        <item>4 times/day</item>
+        <item>5 times/day</item>
+        <item>6 times/day</item>
+        <item>7 times/day</item>
+    </string-array>
+    <string-array name="consumption_per_week">
+        <item>1 time/week</item>
+        <item>2 times/week</item>
+        <item>3 times/week</item>
+        <item>4 times/week</item>
+        <item>5 times/week</item>
+        <item>6 times/week</item>
+        <item>7 times/week</item>
+    </string-array>
+
+    <string-array name="social_type">
+        <item>Corporate case</item>
+        <item>Private Case</item>
+    </string-array>
+
+    <string name="goto_setings">Settings</string>
+    <string name="gps_disabled">GPS is disabled in your device. Would you like to enable it?</string>
+    <string name="known_diagnosis">Known Case</string>
+    <string name="unknown_diagnosis">Unknown Case</string>
+
+    <string name="please_select">Please select </string>
+    <string name="frequency">frequency.</string>
+
+    <!--Prescription Fragment-->
+    <string name="add_new_medicine">Add New Medicine</string>
+    <string name="print_prescription">Print Prescription</string>
+    <string name="instruction">Instruction</string>
+    <string name="title_activity_prescription">PrescriptionActivity</string>
+
+
+    <string name="status">status.</string>
+    <string name="select_frequency">Select frequency</string>
+    <string name="select_status">Select status</string>
+    <string name="msg_print_error">Print not supported for this device.</string>
+
+    <string name="done">Done</string>
+    <string name="enter_symptom">Please enter text</string>
+    <string name="add_new_symptom">Add New Symptom</string>
+
+    <string name="prescription_print_heading">Patanjali</string>
+    <string name="prescription_print_heading_opd">O.P.D.</string>
+    <string name="spcl_instruction">Special Instruction</string>
+
+    <!--Pharmacy_ Collect Sample-->
+
+    <string name="test_type">Test Type</string>
+    <string name="test_category">Text Category</string>
+    <string name="test">Test</string>
+    <string name="print">Print</string>
+    <string name="collected">Collected</string>
+    <string name="delete">Delete</string>
+
+    <string name="please_enter_text">Please enter text.</string>
+    <string name="please_enter_observation">Please enter observation.</string>
+    <string name="please_add_disease">Please add disease.</string>
+    <string name="please_add_disease_name">Disease name can not be blank.</string>
+    <string name="please_add_surgery">Please add Surgery Data.</string>
+    <string name="please_add_surgery_name">Please add Surgery name.</string>
+    <string name="please_add_surgery_description">Please add Surgery Description.</string>
+    <string name="please_add_date_surgery">Please add Date of Surgery.</string>
+    <string name="prescription_saved">Prescription saved successfully.</string>
+
+    <string name="add_family">Add Family</string>
+    <string name="passport">Passport</string>
+    <string name="adhaar">Adhaar Card</string>
+    <string name="pan_card">Pan Card</string>
+    <string name="voter_id">Voter Id</string>
+    <string name="none">None</string>
+    <string name="blood_group">Blood Group</string>
+    <string name="blood_group_hindi">रक्त वर्ग</string>
+    <string name="name_verification_hindi">नाम सत्यापन</string>
+
+
+    <string name="a">A+</string>
+    <string name="an">A-</string>
+    <string name="ab">AB+</string>
+    <string name="abn">AB-</string>
+    <string name="b">B+</string>
+    <string name="bn">B-</string>
+    <string name="o">O+</string>
+    <string name="on">O-</string>
+    <string name="logout_reason_title">Sign out Reason</string>
+    <string name="logout_reason_hint">Enter Reason</string>
+
+    <!--Add new Medicine dialog-->
+    <string name="medicine_name">Medicine Name</string>
+    <string name="dosage_amount_no_of_days">No. of Days</string>
+    <string name="dosage_amount">Dosage</string>
+
+    <string name="enter_medicine_name">Please enter medicine name</string>
+    <string name="enter_instruction">Please enter Instruction</string>
+    <string name="enter_dosage_amount_no_of_days">Please enter number of days.</string>
+    <string name="enter_dosage_amount">Please enter dosage quantity.</string>
+    <string name="emergency_contact">EMERGENCY CONTACT</string>
+    <string name="emergency_contact_hindi">आपातकालीन संपर्क</string>
+
+    <string name="disease_deleted_warning">If you remove this last medicine from the medicine, the disease also will be removed. Do you still want to delete the medicine?</string>
+    <string name="can_not_delete_disease">This is the last disease in the list. You can not delete this disease.</string>
+
+    <!--Family Ribbon-->
+    <string name="family">Family</string>
+    <string name="family_queue">Family Queue</string>
+    <string name="add_or_create_family">Add or Create Family</string>
+    <string name="visit_as_mr">Visit as MR</string>
+    <string name="remove_family_member">Remove Family Member</string>
+    <string name="add_to_existing_family">Add New Family Member</string>
+
+    <string name="hin">HIN</string>
+    <string name="hin_hindi">एच. आय. एन.</string>
+
+    <string name="old_hin">Old HIN</string>
+    <string name="old_hin_hindi">पुराना एच. आय. एन.</string>
+
+
+    <string name="remove_from_family">Remove from Family</string>
+    <string name="remove_from_family_hindi">परिवार से निकालें</string>
+
+    <string name="please_provide_at_least_one_mobile_number">Please update at least one mobile number to add members in your family.</string>
+    <string name="members">Members</string>
+    <string name="can_not_add_other_family_to_your_family">You can not add another family to your family.</string>
+    <string name="no_mobile_number_associated">The other person does not have a mobile number associated to create a family.</string>
+    <string name="you_can_not_add_yourslef">You can not add yourself.</string>
+    <string name="title_activity_help_screen">HelpScreenActivity</string>
+
+    <string name="sample_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
+    <string name="list_of_doctor">List of Doctor</string>
+    <!--MR Patient ribbon-->
+    <string name="medical_representative">Medical Representative</string>
+
+    <!--Tutorial Screens-->
+    <string name="skip">Skip</string>
+    <string name="finish">Finish</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="verify_otp">Verify</string>
+
+    <string name="alert_enter_otp">Please enter your OTP.</string>
+    <string name="title_activity_demo">DemoActivity</string>
+
+    <string name="mobile_no_same_error">Mobile number should not be same.</string>
+    <string name="mobile_field_empty">Mobile no field empty.</string>
+    <string name="patient_habit">Patient Habits</string>
+    <string name="veg">Veg</string>
+    <string name="non_veg">Non Veg</string>
+    <string name="smoking_habit">Smoking</string>
+    <string name="exercises">Exercise</string>
+    <string name="alcohol_habit">Alcohol</string>
+    <string name="patient_vitals">Checkups</string>
+    <string name="height_unit">cm</string>
+    <string name="kg">Kg</string>
+    <string name="temperature">Temperature</string>
+    <string name="bp_systolic">BP-Systolic</string>
+    <string name="bp_unit">mmHg</string>
+    <string name="bp_diastolic">BP-Diastolic</string>
+    <string name="bp_lying">BP-Lying</string>
+    <string name="bp_sitting">BP-Sitting</string>
+    <string name="sugar_fasting">Sugar Fasting</string>
+    <string name="fasting_pp">Fasting/PP</string>
+    <string name="sugar_pp">Sugar PP</string>
+    <string name="sugar_rmd">Sugar Random</string>
+    <string name="sugar_unit">mg/dl</string>
+    <string name="sugal_hb">Sugar HbA1c</string>
+    <string name="lipid_hdl">Lipid Hdl</string>
+    <string name="lipid_ldl">Lipid Ldl</string>
+
+    <string name="food">Food</string>
+    <string name="skin">Skin</string>
+    <string name="dust">Dust</string>
+    <string name="insect">Insect Sting</string>
+    <string name="dog_cat">Dog/Cat</string>
+    <string name="eyes">Eye</string>
+    <string name="drugs">Drugs</string>
+    <string name="latex">Latex</string>
+    <string name="hay_fever">Hay Fever</string>
+    <string name="mold">Mold</string>
+    <string name="sinu">Sinusitis</string>
+    <string name="cockroach">Cockroach</string>
+    <string name="oberservations">Observations</string>
+    <string name="clinical_order">Clinical Order</string>
+    <string name="patient_progress_notes">Patient Progress Notes</string>
+    <string name="patient_data">Patient Data</string>
+    <string name="billing_information">Billing Information</string>
+
+    <string name="please_enter_physical_examination">Please enter physical examination text.</string>
+
+    <!--Chief complaints-->
+    <string name="chief_compalint">Chief Complaints</string>
+    <string name="previous_reading">Previous Readings</string>
+    <string name="reading">Readings</string>
+
+    <string name="blood_pressure_systolic">Blood Pressure - Systolic</string>
+    <string name="blood_pressure_diastolic">Blood Pressure - Diastolic</string>
+    <string name="blood_sugar">Blood Sugar</string>
+    <string name="blood_sugar_pp_fasting">Blood Sugar - PP/Fasting</string>
+    <string name="blood_sugar_fasting">Blood Sugar - Fasting</string>
+    <string name="blood_sugar_random">Blood Sugar - Random</string>
+    <string name="lipid_profile">Lipid Profile</string>
+    <string name="spo2">SPO2</string>
+    <string name="micro_albumin">Micro Albumin</string>
+    <string name="micro_albumin1">Micro\nAlbumin</string>
+    <string name="ecg_status">ECG Status</string>
+    <string name="head_circumference">Head Circumference</string>
+    <string name="neck_circumference">Neck Circumference</string>
+    <string name="delta_sugar">Delta Sugar</string>
+    <string name="head_circumference1">Head \nCircumference</string>
+    <string name="mid_arm_circumference">Mid-Arm Circumference</string>
+    <string name="mid_arm_circumference1">Mid-Arm \nCircumference</string>
+    <string name="blood_sugar_pp">Blood Sugar - PP</string>
+    <string name="blood_sugar_hba1c">Blood Sugar - HbA1c</string>
+    <string name="patient_profile_update_success">Patient profile updated successfully.</string>
+    <string name="phone_number_aleady_exist">Phone number already exits.</string>
+    <string name="previous_prescription">Previous\nPrescription</string>
+    <string name="generate_prescription">My Prescription Templates</string>
+    <string name="scan_prescription">Scan Prescription</string>
+    <string name="unable_to_load_image">Unable to load image. Please try Again.</string>
+
+    <string name="panchakarma_plan">Panchakarma Plan</string>
+    <string name="satkarma_plan">Satkarma Plan</string>
+    <string name="naturopathy_plan">Naturopathy Plan</string>
+    <string name="physiotherapy_plan">Physiotherapy Plan</string>
+    <string name="pranayama_plan">Pranayama Plan</string>
+    <string name="accupressure_plan">Accupressure Plan</string>
+    <string name="exercise_plan">Exercise Plan</string>
+    <string name="diet_plan">Diet Plan</string>
+    <string name="yoga_plan">Yoga Plan</string>
+
+    <string name="special_instruction">Special\nInstruction</string>
+
+    <string name="network_error">Please check your network connection.</string>
+    <string name="registration_plan">Plan Type</string>
+
+    <string name="sync_done">Data synced successfully to server.</string>
+    <string name="sync_no_data">No data available to sync.</string>
+    <string name="sync_in_progress">Sync is in progress.Please Wait.</string>
+    <string name="sync_error">Something went wrong in sync. Please try again.</string>
+    <string name="sync_image_in_progress">Image sync is in progress.</string>
+    <string name="sync_image_in_progress_sign_out">Image sync is in progress. Please try after some time.</string>
+    <string name="sync_done_master_table">Master table data synced successfully from server.</string>
+    <string name="sync_master_error">Something went wrong in master table sync. Please try again.</string>
+
+    <string name="add_medicines_to_save_tempalte">Please add at least one medicine to save prescription.</string>
+    <string name="chief_and_other_complaints">Chief &amp; Other Complaints</string>
+
+    <string name="sync_error_msg">Sync required to complete this action.</string>
+    <string name="digital_Prescription">My Prescription Templates</string>
+    <string name="please_enter_general_instruction">Please enter general instruction.</string>
+    <string name="my_prescription_templates">My Prescription Templates</string>
+
+    <string name="systolic_diastolic">Blood Pressure – Systolic &amp; Diastolic</string>
+    <string name="systolic">Systolic</string>
+    <string name="lying">Lying</string>
+    <string name="sitting">Sitting</string>
+    <string name="add_patient_exam_time">Add Patient Examination Time</string>
+    <string name="add_doc_time">Add Doctor Time</string>
+    <string name="enter_time">Enter Time in Mins.</string>
+    <string name="mins">Mins.</string>
+    <string name="add_time">Add Time</string>
+    <string name="add_time_slot">Add Time Slot</string>
+
+    <!--Patient Billing-->
+    <string name="billing_amount">Bill Amount</string>
+    <string name="generate_bill">Generate Bill</string>
+    <string name="patient_billing">Patient Billing</string>
+
+    <string name="please_save_patient_bill">Please save bill before printing.</string>
+    <string name="contact_information">Contact Information</string>
+
+    <string name="select_day">Select Day</string>
+    <string name="emergency_contact_title">Emergency Contact</string>
+
+    <string name="max_limit_error_msg">Maximum value limit exceeded.</string>
+    <string name="min_limit_error_msg">Minimum value limit exceeded.</string>
+    <string name="active_disease_status">A</string>
+    <string name="cured_disease_status">C</string>
+    <string name="status_text">Status</string>
+
+    <string name="data_saved">Data saved successfully.</string>
+
+    <string name="screen_no_rec_splash_screen">R100</string>
+    <string name="screen_no_rec_sign_in">R101</string>
+    <string name="screen_no_rec_forgot_password">R102</string>
+    <string name="screen_no_rec_verify_otp">R103</string>
+    <string name="screen_no_rec_queue">R104</string>
+    <string name="screen_no_rec_registration_plus">R105</string>
+    <string name="screen_no_rec_edit_profile">R106</string>
+    <string name="screen_no_rec_view_patient_profile">R107</string>
+    <string name="screen_no_rec_scan_document">R108</string>
+    <string name="screen_no_rec_send_to_doc_dept">R109</string>
+    <string name="screen_no_rec_search">R111</string>
+    <string name="screen_no_rec_doc_queue">R112</string>
+    <string name="screen_no_rec_change_password">R113</string>
+    <string name="screen_no_rec_suggestion">R114</string>
+    <string name="screen_no_rec_doctor_timing">R115</string>
+    <string name="screen_no_rec_patient_profile">R116</string>
+    <string name="screen_no_rec_chief_complaint">R117</string>
+    <string name="screen_no_rec_billing_info">R118</string>
+    <string name="screen_no_rec_scan_registration">R119</string>
+    <string name="screen_no_rec_scan_prescription">R120</string>
+    <string name="screen_no_rec_scan_lab_report">R121</string>
+    <string name="screen_no_rec_scan_images">R122</string>
+    <string name="screen_no_rec_scan_patient_photo">R123</string>
+    <string name="screen_no_rec_ribbon_menu">R124</string>
+    <string name="screen_no_rec_generate_billing_info">R125</string>
+    <string name="screen_no_rec_image_display_activity">R126</string>
+    <string name="screen_no_rec_doctor_examination_time">R115</string>
+    <string name="screen_no_doc_splash_screen">OPD100</string>
+    <string name="screen_no_doc_sign_in">OPD101</string>
+    <string name="screen_no_doc_forgot_password">OPD102</string>
+    <string name="screen_no_doc_verify_otp">OPD103</string>
+    <string name="screen_no_doc_queue">OPD104</string>
+    <string name="screen_no_doc_registration_plus">OPD105</string>
+    <string name="screen_no_doc_edit_profile">OPD106</string>
+    <string name="screen_no_doc_view_patient_profile">OPD107</string>
+    <string name="screen_no_doc_send_to_dept">OPD108</string>
+    <string name="screen_no_doc_send_to_reception">OPD109</string>
+    <string name="screen_no_doc_patient_profile">OPD111</string>
+    <string name="screen_no_doc_scan_document">OPD112</string>
+    <string name="screen_no_doc_patient_visit">OPD113</string>
+    <string name="screen_no_doc_search">OPD114</string>
+    <string name="screen_no_doc_change_password">OPD115</string>
+    <string name="screen_no_doc_suggestion">OPD116</string>
+    <string name="screen_no_doc_doctor_timing">OPD117</string>
+    <string name="screen_no_doc_view_add_patient_visit">OPD118</string>
+    <string name="screen_no_doc_add_new_visit">OPD119</string>
+    <string name="screen_no_doc_patient_habits">OPD120</string>
+    <string name="screen_no_doc_patient_vitals">OPD122</string>
+    <string name="screen_no_doc_patient_allergies">OPD124</string>
+    <string name="screen_no_doc_chief_other_complaint">OPD126</string>
+    <string name="screen_no_doc_observation">OPD128</string>
+    <string name="screen_no_doc_lab_report">OPD129</string>
+    <string name="screen_no_doc_images">OPD130</string>
+    <string name="screen_no_doc_diagnosis">OPD131</string>
+    <string name="screen_no_doc_clinical_order">OPD132</string>
+    <string name="screen_no_doc_prescription">OPD133</string>
+    <string name="screen_no_doc_my_prescription_template">OPD134</string>
+    <string name="screen_no_doc_scan_prescription">OPD135</string>
+    <string name="screen_no_doc_previous_prescription">OPD136</string>
+    <string name="screen_no_doc_patient_advice">OPD137</string>
+    <string name="screen_no_doc_exercise_">OPD138</string>
+    <string name="screen_no_doc_diet_">OPD139</string>
+    <string name="screen_no_doc_general_instruction">OPD140</string>
+    <string name="screen_no_doc_patient_progress_notes">OPD141</string>
+    <string name="screen_no_doc_patient_data">OPD142</string>
+    <string name="screen_no_doc_immunization">OPD143</string>
+    <string name="screen_no_doc_surgical_history">OPD144</string>
+    <string name="screen_no_doc_family_hisotry">OPD145</string>
+    <string name="screen_no_doc_contact_info">OPD146</string>
+    <string name="screen_no_doc_emergency_contact_info">OPD147</string>
+    <string name="screen_no_doc_insurance_info">OPD148</string>
+    <string name="screen_no_doc_billing_info">OPD149</string>
+    <string name="screen_no_doc_generate_billing_info">OPD165</string>
+    <string name="screen_no_doc_ribbon_menu">OPD150</string>
+    <string name="screen_no_doc_doctor_examination_time">OPD117</string>
+
+    <string name="screen_no_doc_scan_registration">OPD151</string>
+    <string name="screen_no_doc_scan_prescription_from_ribbon">OPD152</string>
+    <string name="screen_no_doc_scan_lab_report">OPD153</string>
+    <string name="screen_no_doc_scan_images">OPD154</string>
+    <string name="screen_no_doc_scan_patient_photo">OPD155</string>
+
+    <string name="screen_no_doc_patient_vitals_height_weight">OPD156</string>
+    <string name="screen_no_doc_patient_vitals_blood_group">OPD157</string>
+    <string name="screen_no_doc_patient_vitals_temperature">OPD158</string>
+    <string name="screen_no_doc_patient_vitals_blood_pressure">OPD159</string>
+    <string name="screen_no_doc_patient_vitals_pulse">OPD160</string>
+    <string name="screen_no_doc_patient_vitals_bs_fasting">OPD161</string>
+    <string name="screen_no_doc_patient_vitals_bs_random">OPD162</string>
+    <string name="screen_no_doc_patient_vitals_bs_pp">OPD163</string>
+    <string name="screen_no_doc_patient_vitals_bs_hba1c">OPD164</string>
+
+    <string name="screen_no_doc_my_prescription_template_two">OPD166</string>
+    <string name="screen_no_doc_chief_other_complaint_detail">OPD167</string>
+    <string name="screen_no_doc_image_display_activity">OPD168</string>
+    <string name="screen_no_doc_add_body_part">OPD169</string>
+
+    <string name="screen_no_doc_payment">OPD170</string>
+    <string name="screen_no_rec_payment">R127</string>
+    <string name="screen_no_doc_settings">OPD171</string>
+    <string name="screen_no_doc_display_control">OPD172</string>
+    <string name="screen_no_doc_terms_and_conditions">OPD173</string>
+    <string name="screen_no_rec_terms_and_conditions">R128</string>
+    <string name="screen_no_doc_profile">OPD174</string>
+
+    <string name="screen_no_doc_time_slot">OPD174</string>
+    <string name="screen_no_rec_time_slot">R129</string>
+    <string name="screen_no_doc_manage_medicine_master">OPD175</string>
+    <string name="screen_no_doc_create_new_template">OPD176</string>
+
+
+    <string name="screen_no_doc_visiting_hospitals">OPD174</string>
+    <string name="screen_no_rec_visiting_hospitals">R129</string>
+
+    <string name="screen_no_doc_create_new_user">OPD177</string>
+    <string name="screen_no_rec_create_new_user">R130</string>
+
+    <string name="screen_no_doc_doc_profile">OPD178</string>
+    <string name="screen_no_doc_patient_vitals_head_circumference">OPD179</string>
+    <string name="screen_no_doc_patient_vitals_ecg_status">OPD180</string>
+    <string name="screen_no_doc_patient_vitals_mid_arm_circumference">OPD181</string>
+    <string name="screen_no_doc_patient_vitals_micro_albumin">OPD182</string>
+    <string name="screen_no_doc_patient_vitals_spo2">OPD183</string>
+    <string name="screen_no_doc_patient_vitals_lipid_profile">OPD184</string>
+    <string name="allergies">Allergies</string>
+    <string name="reset">Reset</string>
+
+    <string name="please_add_progress_notes">Please add patient progress notes.</string>
+    <string name="consulation_bill">Consultation Bill</string>
+
+    <string name="prepaid_bill">Prepaid Bill</string>
+    <string name="postpaid_bill">Postpaid Bill</string>
+
+    <string name="prepaid">Prepaid</string>
+    <string name="postpaid">Postpaid</string>
+
+    <string name="complaint_hint">Please add complaint here</string>
+    <string name="enter_complaint_name">Please enter complaint.</string>
+    <string name="add_body_part">Add Other Body Parts</string>
+
+    <string name="prepaid_billing">Prepaid Billing</string>
+    <string name="postpaid_billing">Postpaid Billing</string>
+
+    <string name="please_add_family_histiry">Please add family history.</string>
+
+    <string name="logout_message_offline">Connect to internet and sync to avoid data loss.</string>
+    <string name="sync_in_progress_wait">Sync in Progress. Please wait.</string>
+
+    <string name="visit_no_chief_complaints_msg">Please enter Chief Complaints.</string>
+
+    <string name="select_doctor">Select Doctor</string>
+
+    <string name="regi_block_name_id">Patient Name and ID (रोगी का नाम और पहचान पत्र)</string>
+    <string name="regi_block_name_verification">Patient Name Verification (रोगी का नाम सत्यापन)</string>
+    <string name="regi_block_details">Patient Details (रोगी का विवरण)</string>
+    <string name="regi_block_address">Patient Address (रोगी का पता)</string>
+    <string name="regi_block_emergency_contact">Patient Emergency Contact (आपातकालीन संपर्क)</string>
+    <!--<string name="regi_block_plan_type">Plan Type (योजना के प्रकार)</string>-->
+    <string name="regi_block_plan_type">Patient Type (रोगी के प्रकार)</string>
+
+    <string name="regi_block_plan_type_hindi">योजना के प्रकार</string>
+
+
+    <string name="patient_id_hindi">रोगी का पहचान पत्र</string>
+
+    <string name="loading_db_msg">Initializing Database. Please wait.</string>
+    <string name="loading_version_api_msg">Checking for version updates. Please wait.</string>
+    <string name="loading_version_api_msg_fail">Unable to fetch version information.</string>
+    <string name="loading_version_api_msg_latest">You are using latest DHB Application.</string>
+    <string name="loading_version_api_msg_upgrade">Clicking UPGRADE will take you to Play Store.</string>
+    <string name="loading_version_api_msg_unsupported">You are having unsupported version.</string>
+    <string name="upgrade">Upgrade</string>
+
+    <string name="email_id">Email ID</string>
+    <string name="email_id_hindi">ईमेल आईडी</string>
+
+    <string name="landline">Landline No.</string>
+    <string name="landline_hindi">लैंडलाइन नंबर</string>
+    <string name="breakfast_hindi">नाश्ता</string>
+    <string name="lunch_hindi">भोजन</string>
+    <string name="dinner_hindi">खाना</string>
+    <string name="alert_enter_valid_email">Please enter valid email id.</string>
+    <string name="complete_examination">Complete\nExamination</string>
+    <string name="exit_visit_message">Do you want to complete the examination?</string>
+    <string name="exit_visit_pending_consultation_message">Do you want to complete the visit for pending consultation?</string>
+    <string name="subscription_type">Subscription Type</string>
+    <string name="subscription_date">Subscription Date</string>
+    <string name="date_of_registration">(Date of Registration for new patient)</string>
+    <string name="subscription_expiry">Subscription Expiry</string>
+
+    <string name="subscription_type_hindi">सदस्यता प्रकार</string>
+    <string name="subscription_date_hindi">सदस्यता दिनांक</string>
+    <string name="subscription_expiry_hindi">सदस्यता समाप्ति</string>
+
+
+    <string-array name="payment_modes">
+        <!--<item>Paytm Wallet</item>-->
+        <item>Cash</item>
+    </string-array>
+
+    <string name="payment">Payment</string>
+    <string name="save_and_pay">Save</string>
+    <string name="dhb_premium">DHB Premium</string>
+
+    <string-array name="settings_screen_array">
+        <item>Patient Habits</item>
+        <item>Checkups</item>
+        <item>Patient Allergies</item>
+        <item>Chief &amp; Other Complaints</item>
+        <item>Observations</item>
+        <item>Lab Reports</item>
+        <item>Images (Non DIACOM)</item>
+        <item>Diagnosis</item>
+        <item>Clinical Order</item>
+        <item>Prescription</item>
+        <item>Patient Advice</item>
+        <item>Patient Progress Notes</item>
+        <item>Patient Data</item>
+        <item>Billing Information</item>
+    </string-array>
+
+
+    <string-array name="settings_screen_array_checkups">
+        <item>Height &amp; Weight</item>
+        <item>Temperature</item>
+        <item>Blood Pressure</item>
+        <item>Pulse</item>
+        <item>Blood Sugar</item>
+        <item>Lipid Profile</item>
+        <item>SPO2</item>
+        <item>Micro Albumin</item>
+        <item>ECG Status</item>
+        <item>Head Circumference</item>
+        <item>Mid-Arm Circumference</item>
+        <item>Neck Circumference</item>
+    </string-array>
+
+    <string name="show_these_on_add_new_visit">Show These On Add New Visit Screen</string>
+    <string name="power">Power</string>
+    <string name="number_of_days">Number of Days</string>
+    <string name="days">Days</string>
+    <string name="display_control">My Examination Display</string>
+    <string name="display_control_checkups">My Checkups Display</string>
+    <string name="doctor_profile">My Profile</string>
+    <string name="prescription_template">My Prescription Templates</string>
+    <string name="my_time_slot">My Examination Time slot</string>
+    <string name="my_visiting_hospitals">My Visiting Hospitals</string>
+    <string name="manage_medicine_master">Manage Medicine Master</string>
+    <string name="manage_instruction_master">Manage Instruction Master</string>
+    <string name="settings_saved_successfully">Settings saved successfully.</string>
+    <string name="feature_available_in_online_mode">This feature is only available in online mode.</string>
+    <string name="please_select_doctor">Please select doctor.</string>
+    <string name="please_select_department">Please select department.</string>
+    <string name="please_select_reception">Please select reception.</string>
+    <string name="please_select_option">Please select one option.</string>
+
+    <!--Terms and Conditions-->
+    <string name="terms_and_conditions">Terms and Conditions</string>
+    <string name="dhb_data_mangement_text">Digital HealthBook Data Management Pvt. Ltd. ( here after called DHB) is the author and publisher of the Mobile Application ‘DHB’ (Mobile Application and DHB “Website” together). DHB owns and operates the services provided through the mobile application including but not limited to those of the brand names ‘DHB’.</string>
+    <string name="nature_and_applicability_of_terms">1.NATURE AND APPLICABILITY OF TERMS</string>
+    <string name="nature_and_applicability_of_terms_text">Please carefully go through these terms and conditions (“Terms”) and the privacy policy available at https://www.digitalhealthbook.in /company/privacy (under “Privacy Policy”) before you decide to access the mobile application DHB.\n\nThese Terms and the Privacy Policy together constitute a legal agreement (“Agreement”) between you and DHB in connection with your use of the Mobile Application (as defined below).\n\nThe Agreement applies to you whether you are:\n\nA medical practitioner or health care provider (whether an individual professional or an organization) or similar institution wishing to use DHB , or already a user, including designated, authorized associates of such practitioners or institutions (“Practitioner(s)”, “you” or “User”); This Agreement applies to those services made available by DHB on the mobile application, which is offered free of charge to the medical practitioner.\n\nor\n\nA patient, his/her representatives or affiliates, create and maintain ‘Health Accounts’, search for Practitioners by name, specialty, and geographical area, to make appointments with Practitioners, or any other criteria that may be developed and made available by DHB; through the usage of DHB mobile application (“End-User”, “you” or “User”);\n\nThe Services may change from time to time, at the sole discretion of DHB, and the Agreement will apply to your use of the mobile application to avail the Service, as well as to all information provided by you while subscribing to mobile application service.\n\nThis Agreement defines the terms and conditions under which you are allowed to use the mobile application and describes the manner in which we shall treat your account while you are registered as a member with us.\n\nIf you have any questions about any part of the Agreement, feel free to contact us at support@digitalhealthbook.in\n\nBy downloading or accessing the mobile application to use the Services, you irrevocably accept all the conditions stipulated in this Agreement and agree to abide by them.\n\nThis Agreement supersedes all previous oral and written terms and conditions (if any) communicated to you. By availing any Service, you signify your agreement to this Agreement.\n\nWe reserve the right to modify or terminate any portion of the Agreement for any reason and at any time, and such modifications shall be available on our website. You should read the Agreement at regular intervals.\n\nYour use of the mobile application following any such modification constitutes your agreement to follow and be bound by the Agreement so modified. Any additional terms and conditions, disclaimers, privacy policies and other policies applicable in general and/ or to specific areas of this mobile application or to particular Service are also considered as part of the Agreement.\n\nYou acknowledge that you will be bound by this Agreement for availing any of the Services offered by us. If you do not agree with any part of the Agreement, please do not use the mobile application or avail any Services.\n\nYour access to use of the mobile application will be solely at the discretion of DHB.\n\nThe Agreement is published in compliance of, and is governed by the provisions of Indian law, including but not limited to:\n\n\u0020 1) The Indian Contract Act, 1872,\n\u0020 2) The (Indian) Information Technology Act, 2000, and\n\u0020 3) The rules, regulations, guidelines and clarifications\n\u0020\u0020 framed there under, including the (Indian) Information</string>
+    <string name="n0_1">1)</string>
+    <string name="n0_2">2)</string>
+    <string name="n0_3">3)</string>
+    <string name="n0_1_law_text">1)</string>
+    <string name="n0_2_law_text">2)</string>
+    <string name="n0_3_law_text">3)</string>
+
+    <string name="accept_continue">I have read and agree to the terms and conditions.</string>
+    <string name="accept_and_continue">Accept &amp; Continue</string>
+    <string name="please_read_accept_term_and_conditions">Please read and accept the terms and conditions to proceed.</string>
+
+    <string-array name="print_options">
+        <item>Pre-printed Paper</item>
+        <item>Blank Paper Without Visiting Hospital</item>
+    </string-array>
+
+    <string-array name="prescription_print_options">
+        <item>Pre-printed Paper</item>
+        <item>Blank Paper With Visiting Hospital</item>
+        <item>Blank Paper Without Visiting Hospital</item>
+    </string-array>
+
+    <string name="select_paper">Select paper type</string>
+    <string name="mobile_no">Mobile No.</string>
+    <string name="qualification">Qualification</string>
+    <string name="higher_qualification">Higher\nQualification</string>
+    <string name="title">Title</string>
+    <string name="speciality">Speciality</string>
+    <string name="registration_no">Registration No.</string>
+
+    <string name="higher_qualification_limit">You can not add more than 7 higher qualification.</string>
+    <string name="alert_enter_qualification">Please enter your qualification. </string>
+    <string name="alert_enter_title">Please enter your title. </string>
+    <string name="alert_enter_speciality">Please enter your speciality. </string>
+    <string name="alert_enter_registration_no">Please enter your registration number. </string>
+    <string name="open_in_edit_mode">Please open profile in edit mode to add higher qualification.</string>
+    <string name="enter_template_name_error">Please enter template name.</string>
+
+    <string name="mon">Mon</string>
+    <string name="tue">Tue</string>
+    <string name="wed">Wed</string>
+    <string name="thu">Thu</string>
+    <string name="fri">Fri</string>
+    <string name="sat">Sat</string>
+    <string name="sun">Sun</string>
+    <string name="days_cap">Days</string>
+
+    <string name="hospital_name">Hospital Name</string>
+    <string name="select_hospital">Select Hospital</string>
+
+
+    <string name="my_prescription_template">My Prescription Template</string>
+    <string name="new_product_intro">New Product Introduction</string>
+    <string name="create_new_template">Create New Template</string>
+
+    <string name="doctor_profile_updated">Doctor profile updated sucessfully.</string>
+    <string name="search_medicine">Search Medicine</string>
+    <string name="add_medicine">Add Medicine</string>
+    <string name="edit_medicine">Edit Medicine</string>
+    <string name="medicines">Medicine</string>
+    <string name="enter_medicine_power">Please enter medicine power.</string>
+    <string name="already_150_medicines">You already have 150 medicines in your medicines table. You can not add any more.</string>
+    <string name="medicine_deleted">Medicine deleted successfully.</string>
+    <string name="medicine_present">Medicine already added.</string>
+    <string name="medicine_delete_error">Something went wrong. Please try again later.</string>
+
+    <string name="instruction_with_colon">Instruction :</string>
+    <string name="special_instruction_with_colon">Special Instruction :</string>
+
+    <string name="feature_in_dev">This feature is under development.</string>
+
+    <string name="feature_not_in_off">This feature is not available in offline mode.</string>
+    <string name="local_prescription_template">Local Prescription Templates</string>
+    <string name="delete_template_message">Are you sure you want to delete Prescription Template?</string>
+    <string name="delete_medicine_confirmation_msg">Are you sure you want to delete medicine?</string>
+    <string name="delete_medicine_master_confirmation_msg">Are you sure you want to delete this medicine? If medicine is deleted, it will deleted from My Prescription Template.</string>
+    <string name="at_least_one_medicine">There should be at least one medicine in the template.</string>
+    <string name="edit">Edit</string>
+    <string name="paper_type">Paper Type</string>
+
+    <string name="digital">Digital</string>
+    <string name="health_book">HealthBook</string>
+
+    <string name="mobile_number">Mobile Number</string>
+    <string name="send_otp">Send OTP</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="create_new_account_verify_otp_msg">Please enter One Time Password (OTP) sent on your Mobile Number.</string>
+    <string name="cna_verify_otp">Verify OTP</string>
+
+    <string name="first_name_short_error">First Name cannot be less than 2 characters in length.</string>
+    <string name="last_name_short_error">Last Name cannot be less than 2 characters in length.</string>
+    <string name="congratulations">Congratulations</string>
+    <string name="ok">Ok</string>
+    <string name="enter_mobile_number_hint">Enter Your Mobile Number.</string>
+    <string name="birth_weight">Birth Weight</string>
+    <string name="hdl">HDL</string>
+    <string name="ldl">LDL</string>
+    <string name="egfr">EGFR</string>
+    <string name="triglycerides">Triglycerides</string>
+    <string name="total_cholesterol">Total Cholesterol</string>
+    <string name="random">Random</string>
+    <string name="h1bac">HbA1c</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="relative_array">
+        <item>Father</item>
+        <item>Mother</item>
+        <item>Brother</item>
+        <item>Sister</item>
+        <item>Grandfather</item>
+        <item>Grandmother</item>
+    </string-array>
+
+    <string-array name="cure_status_array">
+        <item>Cure</item>
+        <item>Active</item>
+    </string-array>
+</resources>
+

@@ -1,0 +1,55 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        applicationId "com.dhb"
+        minSdkVersion 15
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    useLibrary 'org.apache.http.legacy'
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.android.gms:play-services:12.0.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+  //  implementation 'com.akexorcist:RoundCornerProgressBar:2.0.3'
+    implementation 'com.akexorcist:round-corner-progress-bar:2.1.1'
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    // https://mvnrepository.com/artifact/com.crashlytics.sdk.android/crashlytics
+    implementation group: 'com.crashlytics.sdk.android', name: 'crashlytics', version: '2.10.1'
+
+//    implementation group: 'org.apache.httpcomponents', name: 'httpcore', version: '4.4.14'
+
+ //   implementation group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.5.13'
+
+    implementation 'org.apache.httpcomponents:httpcore:4.4.14'
+    implementation 'org.apache.httpcomponents:httpclient:4.5.13'
+
+//    /*compile 'com.android.support:support-v4:23.3.0'
+//    compile 'com.android.support:support-v13:23.3.0'
+//    compile 'com.android.support:appcompat-v7:23.3.0'
+//    compile 'com.google.android.gms:play-services:8.3.0'
+//    compile 'com.android.support:recyclerview-v7:23.3.0'*/
+
+}
