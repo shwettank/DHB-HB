@@ -1,5 +1,6 @@
 package com.dhb.activity;
 
+import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
@@ -36,6 +37,7 @@ import com.dhb.utils.GeoLocationDialogDelegate;
 import com.dhb.utils.GeoLocationUtils;
 import com.dhb.utils.Logger;
 import com.dhb.utils.NetworkUtils;
+import com.dhb.dao.DhbDao;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -164,6 +166,7 @@ private class ForgotPasswordOnclickListener implements View.OnClickListener {
 }
 
 private class LoginActionOnClickListener implements View.OnClickListener {
+    @SuppressLint("MissingPermission")
     @Override
     public void onClick(View v) {
 
@@ -187,9 +190,9 @@ private class LoginActionOnClickListener implements View.OnClickListener {
                 if (longitude != null && !longitude.isEmpty()){
                     loginRequestModel.setLongitude(longitude);
                 }
-                loginApiCallAsyncTask = asyncTaskForRequest.getLoginAsyncTask(loginRequestModel);
+                /*loginApiCallAsyncTask = asyncTaskForRequest.getLoginAsyncTask(loginRequestModel);
                 loginApiCallAsyncTask.setApiCallAsyncTaskDelegate(new LoginApiCallResult());
-                loginApiCallAsyncTask.execute(loginApiCallAsyncTask);
+                loginApiCallAsyncTask.execute(loginApiCallAsyncTask);*/
 
             }
     }
@@ -444,6 +447,7 @@ private class LoginActionOnClickListener implements View.OnClickListener {
                 .build();
     }
 
+    @SuppressLint("MissingPermission")
     @Override
     public void onConnected(Bundle bundle) {
 
@@ -718,7 +722,7 @@ private class LoginActionOnClickListener implements View.OnClickListener {
         } else {
             return false;
         }*/
-
+        return false;
     }
 
     private void callMasterTableSyncService() {
@@ -827,6 +831,7 @@ public class SyncStatusReceiver extends BroadcastReceiver {
 
 }
 
+    @SuppressLint("InvalidWakeLockTag")
     public void acquirewakeLock() {
 
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);

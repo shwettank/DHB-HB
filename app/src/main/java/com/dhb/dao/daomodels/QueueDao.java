@@ -5,13 +5,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.dhb.models.Patients;
+import com.dhb.models.Queue;
 import com.dhb.utils.AppConstants;
 import com.dhb.utils.AppPreferenceManager;
+import com.dhb.utils.DateUtils;
 import com.dhb.utils.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 
 public class QueueDao {
     private SQLiteDatabase db;

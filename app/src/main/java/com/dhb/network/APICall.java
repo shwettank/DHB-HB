@@ -71,7 +71,7 @@ public class APICall implements AppConstants {
     /**
      * Get request api call
      */
-   /* public String jsonFromUrlGetRequest(AbstractApiModel requestModel) {
+    public String jsonFromUrlGetRequest(AbstractApiModel requestModel) {
 
         String responseJson = "";
         StringEntity entity;
@@ -81,10 +81,9 @@ public class APICall implements AppConstants {
 
         HttpGet httpGet = new HttpGet(requestModel.getRequestUrl());
 
-//        Logger.debug(requestModel.getRequestUrl());
+        Logger.debug(requestModel.getRequestUrl());
 
-                HttpClient httpClient = new DefaultHttpClient(
-                getHttparamsForConnection());
+              /*  HttpClient httpClient = new DefaultHttpClient(getHttparamsForConnection());
 
         String userAgent = "NewUseAgent/1.0";
 
@@ -120,7 +119,7 @@ public class APICall implements AppConstants {
             }
 
 
-            httpResponse = httpClient.execute(httpGet);
+           httpResponse = httpClient.execute(httpGet);
 
 
             statusCode = httpResponse.getStatusLine().getStatusCode();
@@ -188,15 +187,15 @@ public class APICall implements AppConstants {
             }
 
         }
-
+*/
         return responseJson;
 
-    }*/
+    }
 
     /**
      * Put request api call
      */
-    /*public String jsonFromUrlPutRequest(AbstractApiModel requestModel) {
+    public String jsonFromUrlPutRequest(AbstractApiModel requestModel) {
 
         String responseJson = "";
 
@@ -206,7 +205,7 @@ public class APICall implements AppConstants {
         Logger.debug(requestModel.getRequestUrl());
 
 
-        HttpClient httpClient = new DefaultHttpClient(
+       /* HttpClient httpClient = new DefaultHttpClient(
                 getHttparamsForConnection());
 
         if (requestModel.getRequestUrl().startsWith("https"))
@@ -306,16 +305,16 @@ public class APICall implements AppConstants {
 
             }
 
-        }
+        }*/
 
         return responseJson;
 
-    }*/
+    }
 
     /**
      * Post request api call
      */
-    /*public String jsonFromUrlPostRequest(AbstractApiModel requestModel) {
+    public String jsonFromUrlPostRequest(AbstractApiModel requestModel) {
 
         String responseJson = "";
 
@@ -326,7 +325,7 @@ public class APICall implements AppConstants {
         HttpPost httpPost = new HttpPost(requestModel.getRequestUrl());
         Logger.debug(requestModel.getRequestUrl());
 
-        HttpClient httpClient = new DefaultHttpClient(
+      /*  HttpClient httpClient = new DefaultHttpClient(
                 getHttparamsForConnection());
 
         if (requestModel.getRequestUrl().startsWith("https"))
@@ -423,16 +422,16 @@ public class APICall implements AppConstants {
 
             }
 
-        }
+        }*/
 
         return responseJson;
 
-    }*/
+    }
 
     /**
      * Delete request api call
      */
-   /* public String jsonFromUrlDeleteRequest(AbstractApiModel requestModel) {
+   public String jsonFromUrlDeleteRequest(AbstractApiModel requestModel) {
 
         String responseJson = "";
 
@@ -442,7 +441,7 @@ public class APICall implements AppConstants {
 
         HttpDelete httpDelete = new HttpDelete(requestModel.getRequestUrl());
         Logger.debug(requestModel.getRequestUrl());
-        HttpClient httpClient = new DefaultHttpClient(
+      /*   HttpClient httpClient = new DefaultHttpClient(
                 getHttparamsForConnection());
 
         if (requestModel.getRequestUrl().startsWith("https"))
@@ -541,10 +540,10 @@ public class APICall implements AppConstants {
 
             }
 
-        }
+        }*/
         return responseJson;
 
-    }*/
+    }
 
     /**
      * Reading json from Input stream response

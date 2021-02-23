@@ -38,12 +38,12 @@ public class Logger {
             File dir = new File(sdCard.getAbsolutePath() + logDir);
             dir.mkdirs();
             File file = new File(dir, logFileName);
-            PrintsWriter writer = new PrintWriter(new BufferedWriter(
+            /*PrintsWriter writer = new PrintWriter(new BufferedWriter(
                     new FileWriter(file, true), 8 * 1024));
             writer.println(APP_ID + " " + new Date().toString() + " : "
                     + message);
             writer.flush();
-            writer.close();
+            writer.close();*/
         } catch (Exception e){
             e.printStackTrace();
         }
