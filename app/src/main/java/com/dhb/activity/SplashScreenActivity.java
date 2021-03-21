@@ -79,20 +79,33 @@ public class SplashScreenActivity extends AbstractActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         initUI();
-        isOkToShowNextScreen = false;
+   //     isOkToShowNextScreen = false;
+
+    //    showNextScreen(true);
+
         isDbCreationInProgress = true;
         isVersionApiInProgress = false;
-        DbHelper.init(activity.getApplicationContext());
+        /*DbHelper.init(activity.getApplicationContext());
         setVisibilityOfProgress(true);
-        txtLoading.setText(getString(R.string.loading_db_msg));
-        new CreateOrUpgradeDbTask(new DhbDbDelegate(), this.getApplicationContext()).execute();
+        txtLoading.setText(getString(R.string.loading_db_msg));*/
+      //  new CreateOrUpgradeDbTask(new DhbDbDelegate(), this.getApplicationContext()).execute();
 
-        if (AppConstants.LOGIN_TYPE.equalsIgnoreCase("Reception")){
+        /*if (AppConstants.LOGIN_TYPE.equalsIgnoreCase("Reception")){
             showScreenId(getResources().getString(R.string.screen_no_rec_splash_screen));
         } else if (AppConstants.LOGIN_TYPE.equalsIgnoreCase("Doctor")){
             showScreenId(getResources().getString(R.string.screen_no_doc_splash_screen));
-        }
+        }*/
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                /**
+                 *After 3 seconds the User Logged In Status is checked. If true Call Re-Login API
+                 * else navigate to Login Activity
+                 */
+                switchToActivity(activity, LoginActivity.class, null);
 
+            }
+        }, 3000);
     }
 
     private void setFont() {
@@ -116,13 +129,15 @@ public class SplashScreenActivity extends AbstractActivity implements
         setFont();
 //		if (appPreferenceManager.getAPISessionKey().trim().isEmpty()){
         isOkToShowNextScreen = true;
-        showNextScreen(true);
+      //  showNextScreen(true);
 //		} else {
 //
 //			isGooglePlayServicesAvailable();
 //			buildGoogleApiClient();
 //		}
     }
+
+
 
     private void showNextScreen(boolean isDelayedSwitchScreen) {
 

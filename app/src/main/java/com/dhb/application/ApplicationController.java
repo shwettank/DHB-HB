@@ -73,7 +73,7 @@ public class ApplicationController extends MultiDexApplication {
 
         applicationController = this;
 
-        Fabric.with(this, new Crashlytics());
+//        Fabric.with(this, new Crashlytics());
         //  pushAppSetup();
         cacheDir = StorageUtils.getCacheDirectory(getApplicationContext());
         if (!cacheDir.exists()){
