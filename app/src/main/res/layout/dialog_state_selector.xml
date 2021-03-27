@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlt_dialog"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/round_corner">
+
+    <ImageView
+        android:id="@+id/img_title_background"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/text_blue" />
+
+    <TextView
+        android:id="@+id/txt_dialog_title"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/img_title_background"
+        android:layout_alignParentTop="true"
+        android:layout_alignTop="@+id/img_title_background"
+        android:gravity="center"
+        android:text="@string/state"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/dp_25"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_selector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_title_background"
+        android:background="@android:color/white"
+        android:hint="@string/search_state"
+        android:paddingBottom="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_20"
+        android:paddingTop="@dimen/dp_10"
+        android:textSize="@dimen/dp_20">
+
+    </EditText>
+
+    <ListView
+        android:id="@+id/lv_selector"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_selector"
+        android:background="@color/white_text" />
+
+    <TextView
+        android:id="@+id/txt_no_records"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_selector"
+        android:gravity="center"
+        android:padding="@dimen/dp_10"
+        android:text="@string/no_search_record"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/dp_25"
+        android:visibility="gone" />
+
+</RelativeLayout>

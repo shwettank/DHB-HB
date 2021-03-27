@@ -172,7 +172,12 @@ private class LoginActionOnClickListener implements View.OnClickListener {
 
         if (isGooglePlayServicesAvailable())
             if (validate()){
-                AsyncTaskForRequest asyncTaskForRequest = new AsyncTaskForRequest(activity);
+
+                Intent loginIntent = new Intent(LoginActivity.this, HomeScreenActivity.class);
+                startActivity(loginIntent);
+
+
+                /*AsyncTaskForRequest asyncTaskForRequest = new AsyncTaskForRequest(activity);
                 LoginRequestModel loginRequestModel = new LoginRequestModel();
                 loginRequestModel.setMobile(edtMobile.getText().toString());
                 loginRequestModel.setPassword(edtPassword.getText().toString());
@@ -189,7 +194,9 @@ private class LoginActionOnClickListener implements View.OnClickListener {
                 }
                 if (longitude != null && !longitude.isEmpty()){
                     loginRequestModel.setLongitude(longitude);
-                }
+                }*/
+
+
                 /*loginApiCallAsyncTask = asyncTaskForRequest.getLoginAsyncTask(loginRequestModel);
                 loginApiCallAsyncTask.setApiCallAsyncTaskDelegate(new LoginApiCallResult());
                 loginApiCallAsyncTask.execute(loginApiCallAsyncTask);*/

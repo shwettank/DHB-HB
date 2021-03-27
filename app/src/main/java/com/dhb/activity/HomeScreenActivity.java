@@ -1,15 +1,24 @@
 package com.dhb.activity;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
@@ -27,18 +36,29 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
+//import android.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.appcompat.widget.Toolbar;
+
+import androidx.core.app.ActivityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.dhb.customview.RoundedImageView;
+
 import com.dhb.R;
+import com.dhb.adapter.MenuItemsAdapter;
 import com.dhb.application.ApplicationController;
 import com.dhb.dao.DhbDao;
+import com.dhb.dao.daomodels.HealthCareFirmDao;
 import com.dhb.dao.daomodels.PatientQueueCountDao;
+import com.dhb.dialog.HospitalSelectorDialog;
+import com.dhb.fragment.PatientQueueFragment;
 import com.dhb.models.HealthCareFirm;
 import com.dhb.models.PatientQueueCountModel;
+import com.dhb.models.VersionInfo;
 import com.dhb.network.ApiCallAsyncTask;
 import com.dhb.network.ApiCallAsyncTaskDelegate;
 import com.dhb.network.AsyncTaskForRequest;
@@ -47,21 +67,32 @@ import com.dhb.uiutils.AbstractActivity;
 import com.dhb.utils.AlertDialogMessage;
 import com.dhb.utils.AppConstants;
 import com.dhb.utils.AppPreferenceManager;
+import com.dhb.utils.BundleConstants;
+import com.dhb.utils.DateUtils;
+import com.dhb.utils.DeviceUtils;
+import com.dhb.utils.FragmentConstant;
 import com.dhb.utils.GeoLocationDialogDelegate;
 import com.dhb.utils.Logger;
 import com.dhb.utils.NetworkUtils;
+import com.dhb.utils.SelectorDialogResult;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
-public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiClient.ConnectionCallbacks,
+public class HomeScreenActivity extends AbstractActivity implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        GeoLocationDialogDelegate*/
-
-{
-/*    private final static String TAG_FRAGMENT = "TAG_FRAGMENT";
-    private DrawerLayout dlDrawerLayoutprivate FrameLayout fmLayoutContainer;
+        GeoLocationDialogDelegate {
+    private final static String TAG_FRAGMENT = "TAG_FRAGMENT";
+    private DrawerLayout dlDrawerLayout;
+    private FrameLayout fmLayoutContainer;
     private ListView lvDrawerList;
     private TextView txtUserName;
     private TextView txtUserRoleName;
@@ -103,7 +134,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
 
     private boolean isAfterOnCreate = false;
 
-    PatientQueueCountResponseModel patientQueueCountResponseModel;
+  //  PatientQueueCountResponseModel patientQueueCountResponseModel;
 
     private Dialog dialogLogoutReason;
     private Toolbar tlToolBarForFamilyQueue;
@@ -150,7 +181,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
         isSingOut = false;
         setFont();
         setData();
-        if(appPreferenceManager.IsUpdateAvailable()){
+        if (appPreferenceManager.IsUpdateAvailable()) {
             showDialog(appPreferenceManager.getVersionInfoModel());
         }
 
@@ -166,14 +197,15 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
 //        familyQueueFragment = FamilyQueueFragment.getInstance();
     }
 
+    @SuppressLint("NewApi")
     public void initUI() {
         super.initUI();
         activity = this;
         appPreferenceManager = new AppPreferenceManager(this);
         Logger.debug("api key: " + appPreferenceManager.getAPISessionKey());
         dhbDao = new DhbDao(activity);
-        if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.DOCTOR)){
-            if (appPreferenceManager.isAfterLogin()){
+        if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.DOCTOR)) {
+            if (appPreferenceManager.isAfterLogin()) {
                 appPreferenceManager.setIsAfterLogin(false);
                 showHospitalList();
             }
@@ -181,7 +213,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
             HealthCareFirmDao healthCareFirmDao = new HealthCareFirmDao(dhbDao.getDb());
             ArrayList<HealthCareFirm> healthCareFirms = healthCareFirmDao.getAllHealthCareFirmsFromUserId(appPreferenceManager.getUserId());
 
-            if (healthCareFirms != null && healthCareFirms.size() > 0){
+            if (healthCareFirms != null && healthCareFirms.size() > 0) {
                 appPreferenceManager.setHospitalName(healthCareFirms.get(0).getName().toString());
                 appPreferenceManager.setHospitalId(healthCareFirms.get(0).getId().toString());
                 appPreferenceManager.setHospitalPlace(healthCareFirms.get(0).getPlace());
@@ -216,7 +248,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
         txtHealthbook = (TextView) findViewById(R.id.txt_power_heath_book);
         setListener();
         setMenuHeader();
-        setSupportActionBar(tlToolBar);
+        //  setSupportActionBar(tlToolBar);
 
     }
 
@@ -233,7 +265,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
 
         View headerViewHosp = getLayoutInflater().inflate(R.layout.item_hosp_list_menu_header, null);
         lnHospList = (LinearLayout) headerViewHosp.findViewById(R.id.ln_hosp_list);
-        if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.DOCTOR)){
+        if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.DOCTOR)) {
             setHospitalList(null);
             setFooterCounter(eximinedPatientCount, registeredPatientCount);
         }
@@ -252,7 +284,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
         boolean hasMenuKey = ViewConfiguration.get(this).hasPermanentMenuKey();
         boolean hasBackKey = KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_BACK);
         rltLayoutDrawer = (RelativeLayout) dlDrawerLayout.findViewById(R.id.rlt_layout_drawer);
-        if (!hasMenuKey && !hasBackKey){
+        if (!hasMenuKey && !hasBackKey) {
             // Do whatever you need to do, this device has a navigation bar
             rltLayoutDrawer.setPadding(0, 0, 0, 105);
         } else {
@@ -279,7 +311,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
         char[] registeredCountArray = countRegistered.toCharArray();
 
 
-        if (registeredCountArray.length == 7){
+        if (registeredCountArray.length == 7) {
             txtRegisteredCount1.setText(registeredCountArray[0] + "");
             txtRegisteredCount2.setText(registeredCountArray[1] + "");
             txtRegisteredCount3.setText(registeredCountArray[2] + "");
@@ -287,7 +319,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
             txtRegisteredCount5.setText(registeredCountArray[4] + "");
             txtRegisteredCount6.setText(registeredCountArray[5] + "");
             txtRegisteredCount7.setText(registeredCountArray[6] + "");
-        } else if (registeredCountArray.length == 6){
+        } else if (registeredCountArray.length == 6) {
             txtRegisteredCount1.setText("0");
             txtRegisteredCount2.setText(registeredCountArray[0] + "");
             txtRegisteredCount3.setText(registeredCountArray[1] + "");
@@ -295,7 +327,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
             txtRegisteredCount5.setText(registeredCountArray[3] + "");
             txtRegisteredCount6.setText(registeredCountArray[4] + "");
             txtRegisteredCount7.setText(registeredCountArray[5] + "");
-        } else if (registeredCountArray.length == 5){
+        } else if (registeredCountArray.length == 5) {
             txtRegisteredCount1.setText("0");
             txtRegisteredCount2.setText("0");
             txtRegisteredCount3.setText(registeredCountArray[0] + "");
@@ -303,7 +335,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
             txtRegisteredCount5.setText(registeredCountArray[2] + "");
             txtRegisteredCount6.setText(registeredCountArray[3] + "");
             txtRegisteredCount7.setText(registeredCountArray[4] + "");
-        } else if (registeredCountArray.length == 4){
+        } else if (registeredCountArray.length == 4) {
             txtRegisteredCount1.setText("0");
             txtRegisteredCount2.setText("0");
             txtRegisteredCount3.setText("0");
@@ -311,7 +343,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
             txtRegisteredCount5.setText(registeredCountArray[1] + "");
             txtRegisteredCount6.setText(registeredCountArray[2] + "");
             txtRegisteredCount7.setText(registeredCountArray[3] + "");
-        } else if (registeredCountArray.length == 3){
+        } else if (registeredCountArray.length == 3) {
             txtRegisteredCount1.setText("0");
             txtRegisteredCount2.setText("0");
             txtRegisteredCount3.setText("0");
@@ -319,7 +351,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
             txtRegisteredCount5.setText(registeredCountArray[0] + "");
             txtRegisteredCount6.setText(registeredCountArray[1] + "");
             txtRegisteredCount7.setText(registeredCountArray[2] + "");
-        } else if (registeredCountArray.length == 2){
+        } else if (registeredCountArray.length == 2) {
             txtRegisteredCount1.setText("0");
             txtRegisteredCount2.setText("0");
             txtRegisteredCount3.setText("0");
@@ -327,7 +359,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
             txtRegisteredCount5.setText("0");
             txtRegisteredCount6.setText(registeredCountArray[0] + "");
             txtRegisteredCount7.setText(registeredCountArray[1] + "");
-        } else if (registeredCountArray.length == 1 && eximinedPatientCount != 0){
+        } else if (registeredCountArray.length == 1 && eximinedPatientCount != 0) {
             txtRegisteredCount1.setText("0");
             txtRegisteredCount2.setText("0");
             txtRegisteredCount3.setText("0");
@@ -348,7 +380,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
 
         String countEximined = eximinedPatientCount + "";
         char[] examinedCountArray = countEximined.toCharArray();
-        if (examinedCountArray.length == 7){
+        if (examinedCountArray.length == 7) {
             txtExaminedCount1.setText(examinedCountArray[0] + "");
             txtExaminedCount2.setText(examinedCountArray[1] + "");
             txtExaminedCount3.setText(examinedCountArray[2] + "");
@@ -356,7 +388,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
             txtExaminedCount5.setText(examinedCountArray[4] + "");
             txtExaminedCount6.setText(examinedCountArray[5] + "");
             txtExaminedCount7.setText(examinedCountArray[6] + "");
-        } else if (examinedCountArray.length == 6){
+        } else if (examinedCountArray.length == 6) {
             txtExaminedCount1.setText("0");
             txtExaminedCount2.setText(examinedCountArray[0] + "");
             txtExaminedCount3.setText(examinedCountArray[1] + "");
@@ -364,7 +396,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
             txtExaminedCount5.setText(examinedCountArray[3] + "");
             txtExaminedCount6.setText(examinedCountArray[4] + "");
             txtExaminedCount7.setText(examinedCountArray[5] + "");
-        } else if (examinedCountArray.length == 5){
+        } else if (examinedCountArray.length == 5) {
             txtExaminedCount1.setText("0");
             txtExaminedCount2.setText("0");
             txtExaminedCount3.setText(examinedCountArray[0] + "");
@@ -372,7 +404,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
             txtExaminedCount5.setText(examinedCountArray[2] + "");
             txtExaminedCount6.setText(examinedCountArray[3] + "");
             txtExaminedCount7.setText(examinedCountArray[4] + "");
-        } else if (examinedCountArray.length == 4){
+        } else if (examinedCountArray.length == 4) {
             txtExaminedCount1.setText("0");
             txtExaminedCount2.setText("0");
             txtExaminedCount3.setText("0");
@@ -380,7 +412,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
             txtExaminedCount5.setText(examinedCountArray[1] + "");
             txtExaminedCount6.setText(examinedCountArray[2] + "");
             txtExaminedCount7.setText(examinedCountArray[3] + "");
-        } else if (examinedCountArray.length == 3){
+        } else if (examinedCountArray.length == 3) {
             txtExaminedCount1.setText("0");
             txtExaminedCount2.setText("0");
             txtExaminedCount3.setText("0");
@@ -388,7 +420,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
             txtExaminedCount5.setText(examinedCountArray[0] + "");
             txtExaminedCount6.setText(examinedCountArray[1] + "");
             txtExaminedCount7.setText(examinedCountArray[2] + "");
-        } else if (examinedCountArray.length == 2){
+        } else if (examinedCountArray.length == 2) {
             txtExaminedCount1.setText("0");
             txtExaminedCount2.setText("0");
             txtExaminedCount3.setText("0");
@@ -396,7 +428,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
             txtExaminedCount5.setText("0");
             txtExaminedCount6.setText(examinedCountArray[0] + "");
             txtExaminedCount7.setText(examinedCountArray[1] + "");
-        } else if (examinedCountArray.length == 1 && eximinedPatientCount != 0){
+        } else if (examinedCountArray.length == 1 && eximinedPatientCount != 0) {
             txtExaminedCount1.setText("0");
             txtExaminedCount2.setText("0");
             txtExaminedCount3.setText("0");
@@ -429,7 +461,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
         txtRegisteredCount7.setTypeface(fontOpenRobotoRegular);
 //        lvDrawerList.addFooterView(footerViewCounter);
 //        dlDrawerLayout.addView(footerViewCounter);
-        if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.DOCTOR)){
+        if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.DOCTOR)) {
             rltLayoutDrawer.setVisibility(View.VISIBLE);
         } else {
             rltLayoutDrawer.setVisibility(View.GONE);
@@ -438,13 +470,13 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
 
     public void setHospitalList(ArrayList<HealthCareFirm> healthCareFirmsList) {
         lnHospList.removeAllViews();
-        if (healthCareFirmsList == null){
-            HealthCareFirmDao healthCareFirmDao = new HealthCareFirmDao(dhbDao.getDb());
-            ArrayList<HealthCareFirm> healthCareFirms = healthCareFirmDao.getAllHealthCareFirmsFromUserId(appPreferenceManager.getUserId());
-            healthCareFirmsList = healthCareFirms;
+        if (healthCareFirmsList == null) {
+//            HealthCareFirmDao healthCareFirmDao = new HealthCareFirmDao(dhbDao.getDb());
+//            ArrayList<HealthCareFirm> healthCareFirms = healthCareFirmDao.getAllHealthCareFirmsFromUserId(appPreferenceManager.getUserId());
+//            healthCareFirmsList = healthCareFirms;
         }
 
-        for (HealthCareFirm healthCareFirm : healthCareFirmsList){
+        for (HealthCareFirm healthCareFirm : healthCareFirmsList) {
 
             PatientQueueCountDao patientQueueCountDao = new PatientQueueCountDao(dhbDao.getDb());
             PatientQueueCountModel patientQueueCountModel = patientQueueCountDao.getpatientQueueCountModelWithId(healthCareFirm.getId());
@@ -458,12 +490,12 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
 //			if (healthCareFirm.getPatientCount() != null){
 //				txtHospPatientCount.setText(healthCareFirm.getPatientCount());
 //			}
-            if (patientQueueCountModel != null && patientQueueCountModel.getPatientCountQueue() != null){
+            if (patientQueueCountModel != null && patientQueueCountModel.getPatientCountQueue() != null) {
                 txtHospPatientCount.setText(patientQueueCountModel.getPatientCountQueue());
             } else {
                 txtHospPatientCount.setText("0");
             }
-            if (healthCareFirm.getName().trim().equals(appPreferenceManager.getHospitalName())){
+            if (healthCareFirm.getName().trim().equals(appPreferenceManager.getHospitalName())) {
                 layHospName.setBackgroundColor(0xFFE0E0E0);
             }
             txtHospName.setTypeface(fontOpenRobotoRegular);
@@ -471,16 +503,16 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
             lnHospList.addView(hospItem);
 
         }
-        if (menuItemsAdapter != null){
+        if (menuItemsAdapter != null) {
             menuItemsAdapter.notifyDataSetChanged();
         }
     }
 
     private void setData() {
-        if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.RECEPTION)){
+        if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.RECEPTION)) {
             txtDoctorName.setText(appPreferenceManager.getDoctorName());
             txtUserName.setText(appPreferenceManager.getDoctorName());
-        } else if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.DOCTOR)){
+        } else if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.DOCTOR)) {
             txtDoctorName.setText("Dr. " + appPreferenceManager.getDoctorName());
             txtUserName.setText("Dr. " + appPreferenceManager.getDoctorName());
         }
@@ -490,8 +522,8 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
         txtUserRoleName.setText(appPreferenceManager.getRoleName());
 
         String imageUrl = appPreferenceManager.getImageUrl();
-        if (imageUrl != null){
-            ApplicationController.imageLoader.displayImage(imageUrl, imgUserPicture);
+        if (imageUrl != null) {
+            //      ApplicationController.imageLoader.displayImage(imageUrl, imgUserPicture);
         }
 
 
@@ -527,7 +559,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
         ArrayList<Integer> menuItemIcon = new ArrayList<>();
         ArrayList<String> menuNames = new ArrayList<>();
 
-        if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.DOCTOR)){
+        if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.DOCTOR)) {
 //            menuItemIcon.add(R.drawable.patient_queue);
 //			menuItemIcon.add(R.drawable.doctor_referal_icon);
             menuItemIcon.add(R.drawable.doctors_present_queue);
@@ -578,7 +610,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
         menuItemsAdapter = new MenuItemsAdapter(HomeScreenActivity.this, menuNames, menuItemIcon);
         lvDrawerList.setAdapter(menuItemsAdapter);
 
-        if (isFirstTime){
+        if (isFirstTime) {
             lvDrawerList.performItemClick(lvDrawerList, 1, 0);
         }
 //        pushFragments(patientQueueFragment, false, true, FragmentConstant.FRAGMENT_PATIENT_QUEUE);
@@ -612,30 +644,28 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             dlDrawerLayout.closeDrawer(Gravity.LEFT);
 
-            if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.DOCTOR)){
-                switch (i)
-
-                {
-                    case 1 :
+            if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.DOCTOR)) {
+                switch (i) {
+                    case 1:
                         pushFragments(patientQueueFragment, false, true, FragmentConstant.FRAGMENT_PATIENT_QUEUE);
                         //pushFragments(familyQueueFragment, false, true, FragmentConstant.FRAGMENT_FAMILY_QUEUE);
-                        if (patientQueueFragment != null){
-                            if (((PatientQueueFragment) patientQueueFragment).rltLayoutPresentQueue != null){
+                        if (patientQueueFragment != null) {
+                            if (((PatientQueueFragment) patientQueueFragment).rltLayoutPresentQueue != null) {
                                 ((PatientQueueFragment) patientQueueFragment).isOkToFireApiForRefreshQueue = false;
                                 ((PatientQueueFragment) patientQueueFragment).rltLayoutPresentQueue.performClick();
                             }
                         }
                         break;
                     case 2:
-                        Intent intent = new Intent(activity, HoldVisitQueueActivity.class );
+                        Intent intent = new Intent(activity, HoldVisitQueueActivity.class);
                         startActivity(intent);
                         break;
                     case 3:
                         callChangesPasswordActivity();
                         break;
                     case 4:
-                        if (NetworkUtils.isNetworkAvailable(activity)){
-                            if (isOfflineSyncServiceIsInProgress()){
+                        if (NetworkUtils.isNetworkAvailable(activity)) {
+                            if (isOfflineSyncServiceIsInProgress()) {
                                 Toast.makeText(activity, getString(R.string.sync_image_in_progress), Toast.LENGTH_LONG).show();
                             } else {
                                 callOfflineSyncService();
@@ -666,7 +696,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
                         break;
 
                     case 7:
-                        if (NetworkUtils.isNetworkAvailable(activity)){
+                        if (NetworkUtils.isNetworkAvailable(activity)) {
 //						if (isOfflineSyncServiceIsInProgress()){
 //							Toast.makeText(activity, getString(R.string.sync_in_progress_wait), Toast.LENGTH_LONG).show();
 //						} else {
@@ -681,30 +711,28 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
 
                 }
 
-            } else if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.RECEPTION)){
-                switch (i)
-
-                {
+            } else if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.RECEPTION)) {
+                switch (i) {
                     case 1:
                         pushFragments(patientQueueFragment, false, true, FragmentConstant.FRAGMENT_PATIENT_QUEUE);
                         // pushFragments(familyQueueFragment, false, true, FragmentConstant.FRAGMENT_FAMILY_QUEUE);
-                        if (patientQueueFragment != null){
-                            if (((PatientQueueFragment) patientQueueFragment).rltLayoutPresentQueue != null){
+                        if (patientQueueFragment != null) {
+                            if (((PatientQueueFragment) patientQueueFragment).rltLayoutPresentQueue != null) {
                                 ((PatientQueueFragment) patientQueueFragment).isOkToFireApiForRefreshQueue = false;
                                 ((PatientQueueFragment) patientQueueFragment).rltLayoutPresentQueue.performClick();
                             }
                         }
                         break;
                     case 2:
-                        Intent intentDoctor = new Intent(activity, DoctorPresentQueueActivity.class );
+                        Intent intentDoctor = new Intent(activity, DoctorPresentQueueActivity.class);
                         startActivity(intentDoctor);
                         break;
                     case 3:
                         callChangesPasswordActivity();
                         break;
                     case 4:
-                        if (NetworkUtils.isNetworkAvailable(activity)){
-                            if (isOfflineSyncServiceIsInProgress()){
+                        if (NetworkUtils.isNetworkAvailable(activity)) {
+                            if (isOfflineSyncServiceIsInProgress()) {
                                 Toast.makeText(activity, getString(R.string.sync_image_in_progress), Toast.LENGTH_LONG).show();
                             } else {
                                 callOfflineSyncService();
@@ -731,7 +759,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
 //					callHelpActivity();
 //					break;
                     case 6:
-                        if (NetworkUtils.isNetworkAvailable(activity)){
+                        if (NetworkUtils.isNetworkAvailable(activity)) {
 //                            if (isOfflineSyncServiceIsInProgress()) {
 //                                Toast.makeText(activity, getString(R.string.sync_in_progress_wait), Toast.LENGTH_LONG).show();
 //                            } else {
@@ -752,27 +780,27 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
     }
 
     public boolean isOfflineSyncServiceIsInProgress() {
-        if (isServiceRunning(OfflineSyncService.class )){
+       /* if (isServiceRunning(OfflineSyncService.class)) {
             return true;
         } else {
             return false;
-        }
-
+        }*/
+        return false;
     }
 
     public boolean isMasterTableSyncServiceIsInProgress() {
-        if (isServiceRunning(MasterTableSyncService.class )){
+       /* if (isServiceRunning(MasterTableSyncService.class)) {
             return true;
         } else {
             return false;
-        }
-
+        }*/
+        return false;
     }
 
     private boolean isServiceRunning(Class<?> serviceClass) {
         ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)){
-            if (serviceClass.getName().equals(service.service.getClassName())){
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
                 return true;
             }
         }
@@ -780,11 +808,11 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
     }
 
     public void stopOfflineSyncService() {
-        stopService(new Intent(HomeScreenActivity.this, OfflineSyncService.class ));
+        //  stopService(new Intent(HomeScreenActivity.this, OfflineSyncService.class));
     }
 
     public void stopMasterTableSyncService() {
-        stopService(new Intent(HomeScreenActivity.this, MasterTableSyncService.class ));
+        //     stopService(new Intent(HomeScreenActivity.this, MasterTableSyncService.class));
     }
 
     private void callSettingsActivity() {
@@ -793,58 +821,58 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
     }
 
     private void callHelpActivity() {
-        Intent intentHelp = new Intent(activity, HelpScreenActivity.class );
+        Intent intentHelp = new Intent(activity, HelpScreenActivity.class);
         startActivity(intentHelp);
         return;
     }
 
     private void callOfflineSyncService() {
-        Intent intent = new Intent(HomeScreenActivity.this, OfflineSyncService.class );
-        startService(intent);
+     /*   Intent intent = new Intent(HomeScreenActivity.this, OfflineSyncService.class);
+        startService(intent);*/
         return;
     }
 
     private void callMasterTableSyncService() {
-        Intent intent = new Intent(HomeScreenActivity.this, MasterTableSyncService.class );
-        startService(intent);
+        /*Intent intent = new Intent(HomeScreenActivity.this, MasterTableSyncService.class);
+        startService(intent);*/
         return;
     }
 
     private void callSuggestionActivity() {
-        if (!NetworkUtils.isNetworkAvailable(activity)){
+        if (!NetworkUtils.isNetworkAvailable(activity)) {
             Toast.makeText(activity, "This feature is only available in online mode.", Toast.LENGTH_LONG).show();
             return;
         }
-        Intent intentSuggestion = new Intent(activity, SuggestionActivity.class );
+        Intent intentSuggestion = new Intent(activity, SuggestionActivity.class);
         startActivity(intentSuggestion);
         return;
     }
 
     private void callChangesPasswordActivity() {
-        if (!NetworkUtils.isNetworkAvailable(activity)){
+        if (!NetworkUtils.isNetworkAvailable(activity)) {
             Toast.makeText(activity, "This feature is only available in online mode.", Toast.LENGTH_LONG).show();
             return;
         }
-        Intent intent = new Intent(activity, ChangePasswordActivity.class );
+        Intent intent = new Intent(activity, ChangePasswordActivity.class);
         startActivity(intent);
 
         return;
     }
 
     public void showSyncProgressBarDialog() {
-        if (!syncBarProgressDialog.isShowing()){
+        if (!syncBarProgressDialog.isShowing()) {
             syncBarProgressDialog.show();
         }
     }
 
     public void hideSyncProgressBarDialog() {
-        if (syncBarProgressDialog != null && syncBarProgressDialog.isShowing()){
+        if (syncBarProgressDialog != null && syncBarProgressDialog.isShowing()) {
             syncBarProgressDialog.dismiss();
         }
     }
 
     public void initSyncProgressBarDialog() {
-        if (syncBarProgressDialog == null){
+        if (syncBarProgressDialog == null) {
             syncBarProgressDialog = new ProgressDialog(HomeScreenActivity.this);
             syncBarProgressDialog.setTitle("Please wait");
             syncBarProgressDialog.setMessage("Sync in Progress");
@@ -859,17 +887,17 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 111){
+        if (requestCode == 111) {
             isAfterGooglePlayServiceIntent = true;
         } else {
             isAfterGooglePlayServiceIntent = false;
         }
         if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.DOCTOR)
-                || appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.RECEPTION)){
+                || appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.RECEPTION)) {
 //			if (requestCode == REQUSET_CODE_ACTIVITY_RESULT && resultCode == RESULT_OK){
-            if (requestCode == REQUSET_CODE_ACTIVITY_RESULT){
-                if (patientQueueFragment != null){
-                    if (((PatientQueueFragment) patientQueueFragment).rltLayoutPresentQueue != null){
+            if (requestCode == REQUSET_CODE_ACTIVITY_RESULT) {
+                if (patientQueueFragment != null) {
+                    if (((PatientQueueFragment) patientQueueFragment).rltLayoutPresentQueue != null) {
                         ((PatientQueueFragment) patientQueueFragment).isOkToFireApiForRefreshQueue = false;
                         ((PatientQueueFragment) patientQueueFragment).rltLayoutPresentQueue.performClick();
                     }
@@ -884,7 +912,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
         @Override
         public void onAlertDialogOkButtonListener() {
 
-            if (!isOfflineSyncServiceIsInProgress()){
+            if (!isOfflineSyncServiceIsInProgress()) {
                 isSingOut = true;
                 callOfflineSyncService();
             } else {
@@ -905,22 +933,32 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
 
     public void callLogout(String reason, boolean showDialog) {
         //delete hospital mapping
-        UserHealthCareFirmMapDao userHealthCareFirmMapDao = new UserHealthCareFirmMapDao(dhbDao.getDb());
+       /* UserHealthCareFirmMapDao userHealthCareFirmMapDao = new UserHealthCareFirmMapDao(dhbDao.getDb());
         userHealthCareFirmMapDao.deleteUserHealthcareFirmMap(appPreferenceManager.getUserId());
-
+*/
         //Logout API call
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        if (mLastLocation != null){
+        if (mLastLocation != null) {
             latitude = String.valueOf(mLastLocation.getLatitude());
             longitude = String.valueOf(mLastLocation.getLongitude());
         }
-        AsyncTaskForRequest asyncTaskForRequest = new AsyncTaskForRequest(activity);
+        /*AsyncTaskForRequest asyncTaskForRequest = new AsyncTaskForRequest(activity);
         logoutApiCallAsyncTask = asyncTaskForRequest.getLogOutAsyncTask(latitude, longitude, reason,
                 appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.DOCTOR));
         LogOutApiCallResult logOutApiCallResult = new LogOutApiCallResult();
         logOutApiCallResult.setShowErrorDialog(showDialog);
         logoutApiCallAsyncTask.setApiCallAsyncTaskDelegate(logOutApiCallResult);
-        logoutApiCallAsyncTask.execute(logoutApiCallAsyncTask);
+        logoutApiCallAsyncTask.execute(logoutApiCallAsyncTask);*/
     }
 
     private class SearchButtonOnclickListener implements View.OnClickListener {
@@ -928,19 +966,19 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
         @Override
         public void onClick(View view) {
 
-            if (!isSearchClicked){
+            if (!isSearchClicked) {
 
                 isSearchClicked = true;
 
-                Intent intent = new Intent(activity, SearchPatientActivity.class );
+                Intent intent = new Intent(activity, SearchPatientActivity.class);
                 Bundle bundle = new Bundle();
-                if (familyQueueFragment != null && familyQueueFragment.isVisible()){
+                if (familyQueueFragment != null && familyQueueFragment.isVisible()) {
                     bundle.putBoolean(BundleConstants.TO_BE_ADDED_IN_FAMILY, true);
                     bundle.putBoolean(BundleConstants.IS_FAMILY, true);
                     bundle.putString(BundleConstants.FAMILY_ID, familyId);
                     bundle.putBoolean(BundleConstants.IS_FROM_FAMILY_FRAGMENT, true);
                 } else {
-                    if (((PatientQueueFragment) patientQueueFragment).isFirstTabQueue){
+                    if (((PatientQueueFragment) patientQueueFragment).isFirstTabQueue) {
                         bundle.putBoolean(BundleConstants.IS_FROM_PRESENT, true);
                     } else {
                         bundle.putBoolean(BundleConstants.IS_FROM_PRESENT, false);
@@ -957,7 +995,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
     }
 
 
-    private class LogOutApiCallResult implements ApiCallAsyncTaskDelegate {
+    /*private class LogOutApiCallResult implements ApiCallAsyncTaskDelegate {
 
         private boolean showDialog = true;
 
@@ -968,33 +1006,29 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
         @Override
         public void apiCallResult(String json, int statusCode) {
 
-            ResponseParser responseParser = new ResponseParser(activity);
+           ResponseParser responseParser = new ResponseParser(activity);
             responseParser.setToShowErrorDailog(showDialog);
             SuccessResponseModel successResponseModel = responseParser.getSuccessResponseModel(json, statusCode);
 
-            if (successResponseModel != null && successResponseModel.getStatus() == 200){
+            if (successResponseModel != null && successResponseModel.getStatus() == 200) {
 
                 appPreferenceManager.clearAllPreferences();
 
                 //appPreferenceManager.setIsAfterLogin(false);
-                if (dhbDao == null){
+                if (dhbDao == null) {
                     dhbDao = new DhbDao(activity);
                 }
                 dhbDao.deleteDb();
 
-//				Intent i = new Intent(activity, LoginActivity.class);
-//				i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//				startActivity(i);
-
-                if (dialogLogoutReason != null && dialogLogoutReason.isShowing()){
+                if (dialogLogoutReason != null && dialogLogoutReason.isShowing()) {
                     dialogLogoutReason.dismiss();
                 }
 
                 ApplicationController.clearActivityStack();
             } else if (successResponseModel != null && successResponseModel.getStatus() == 400
-                    && successResponseModel.getMessage().equals("Provide the reason for logout.")){
+                    && successResponseModel.getMessage().equals("Provide the reason for logout.")) {
 
-                if (dialogLogoutReason != null && dialogLogoutReason.isShowing()){
+                if (dialogLogoutReason != null && dialogLogoutReason.isShowing()) {
                     dialogLogoutReason.dismiss();
                 }
 
@@ -1002,28 +1036,22 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
                 dialogLogoutReason.show();
 
             } else if (successResponseModel != null && successResponseModel.getStatus() == 401
-                    && successResponseModel.getMessage().equals("Session Expired, Please Sign in again!")){
+                    && successResponseModel.getMessage().equals("Session Expired, Please Sign in again!")) {
 
                 appPreferenceManager.clearAllPreferences();
-                if (dhbDao == null){
+                if (dhbDao == null) {
                     dhbDao = new DhbDao(activity);
                 }
                 dhbDao.deleteDb();
 
-                //appPreferenceManager.setIsAfterLogin(false);
-
-//				Intent i = new Intent(activity, LoginActivity.class);
-//				i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//				startActivity(i);
-
-                if (dialogLogoutReason != null && dialogLogoutReason.isShowing()){
+                if (dialogLogoutReason != null && dialogLogoutReason.isShowing()) {
                     dialogLogoutReason.dismiss();
                 }
 
                 ApplicationController.clearActivityStack();
 
             } else {
-                if (dialogLogoutReason != null && dialogLogoutReason.isShowing()){
+                if (dialogLogoutReason != null && dialogLogoutReason.isShowing()) {
                     dialogLogoutReason.dismiss();
                 }
             }
@@ -1034,17 +1062,17 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
 
         }
 
-    }
+    }*/
 
-    private class LogoutReasonSelectionDelegate implements SelectorDialogResult {
+   /* private class LogoutReasonSelectionDelegate implements SelectorDialogResult {
 
         @Override
         public void setSelector(String logoutReason, int reasonId) {
 
-            if (isOfflineSyncServiceIsInProgress()){
+            if (isOfflineSyncServiceIsInProgress()) {
                 stopOfflineSyncService();
             }
-            if (isMasterTableSyncServiceIsInProgress()){
+            if (isMasterTableSyncServiceIsInProgress()) {
                 stopMasterTableSyncService();
             }
             callLogout(logoutReason, true);
@@ -1055,45 +1083,50 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
 
         }
 
-    }
+    }*/
 
     public void pushFragments(Fragment fragment, boolean shouldAnimate,
                               boolean shouldAdd, String tag) {
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction ft = manager.beginTransaction();
-        if (shouldAnimate){
-            // ft.setCustomAnimations(R.animator.fragment_slide_left_enter,
-            // R.animator.fragment_slide_left_exit,
-            // R.animator.fragment_slide_right_enter,
-            // R.animator.fragment_slide_right_exit);
+       // FragmentManager manager = getSupportFragmentManager();
+      //  FragmentManager manager = getFragmentManager();
+      //  FragmentTransaction ft = manager.beginTransaction();
+        try {
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            if (shouldAnimate) {
+                // ft.setCustomAnimations(R.animator.fragment_slide_left_enter,
+                // R.animator.fragment_slide_left_exit,
+                // R.animator.fragment_slide_right_enter,
+                // R.animator.fragment_slide_right_exit);
+            }
+           // ft.replace(R.id.fm_layout_container, fragment, TAG_FRAGMENT);
+
+            //      ft.add(R.id.fm_layout_container, fragment, TAG_FRAGMENT);
+
+            if (shouldAdd) {
+
+                ft.addToBackStack(tag);
+            } else {
+
+                getFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            }
+
+            ft.commit();
+        }catch (Exception e){
+            Log.e("Exception",e.toString());
         }
-
-        ft.replace(R.id.fm_layout_container, fragment, TAG_FRAGMENT);
-
-        //ft.add(R.id.fr_layout_container, fragment, TAG_FRAGMENT);
-
-        if (shouldAdd){
-
-            ft.addToBackStack(tag);
-        } else {
-
-            manager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        }
-
-        ft.commit();
     }
 
     private class AddNewPatientOnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
 
-            if (!isAddClicked){
+            if (!isAddClicked) {
 
 
                 isAddClicked = true;
 
-                Intent intent = new Intent(activity, PatientRegistrationActivity.class );
-                if (familyQueueFragment != null && familyQueueFragment.isVisible()){
+                Intent intent = new Intent(activity, PatientRegistrationActivity.class);
+                if (familyQueueFragment != null && familyQueueFragment.isVisible()) {
                     Bundle bundle = new Bundle();
                     bundle.putBoolean(BundleConstants.TO_BE_ADDED_IN_FAMILY, true);
                     bundle.putBoolean(BundleConstants.IS_FAMILY, true);
@@ -1113,17 +1146,17 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            if (intent != null && intent.getAction() != null){
+            if (intent != null && intent.getAction() != null) {
 
-                if (intent.getAction().equals(AppConstants.OFFLINE_STATUS_ACTION_IN_PROGRESS)){
+                if (intent.getAction().equals(AppConstants.OFFLINE_STATUS_ACTION_IN_PROGRESS)) {
 
                     int totalUploadCount = 0, uploadedCount = 0;
 
-                    if (intent != null && intent.getExtras() != null){
-                        if (intent.getExtras().containsKey(AppConstants.OFFLINE_TOTAL_COUNT)){
+                    if (intent != null && intent.getExtras() != null) {
+                        if (intent.getExtras().containsKey(AppConstants.OFFLINE_TOTAL_COUNT)) {
                             totalUploadCount = intent.getExtras().getInt(AppConstants.OFFLINE_TOTAL_COUNT);
                         }
-                        if (intent.getExtras().containsKey(AppConstants.OFFLINE_COMPLETED_COUNT)){
+                        if (intent.getExtras().containsKey(AppConstants.OFFLINE_COMPLETED_COUNT)) {
                             uploadedCount = intent.getExtras().getInt(AppConstants.OFFLINE_COMPLETED_COUNT);
                         }
 
@@ -1132,7 +1165,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
                     initSyncProgressBarDialog();
                     syncBarProgressDialog.setMax(totalUploadCount);
 
-                    if (uploadedCount <= totalUploadCount){
+                    if (uploadedCount <= totalUploadCount) {
                         syncBarProgressDialog.setProgress(uploadedCount);
                         showSyncProgressBarDialog();
                     } else {
@@ -1145,37 +1178,37 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
 //						}
                     }
 
-                } else if (intent.getAction().equals(AppConstants.OFFLINE_STATUS_ACTION_DONE)){
+                } else if (intent.getAction().equals(AppConstants.OFFLINE_STATUS_ACTION_DONE)) {
 
                     hideSyncProgressBarDialog();
                     syncBarProgressDialog = null;
 
-                    if (intent != null && intent.getExtras() != null){
+                    if (intent != null && intent.getExtras() != null) {
                         boolean isIssueFoundInSync = false;
-                        if (intent.getExtras().containsKey(AppConstants.OFFLINE_ISSUE_FOUND)){
+                        if (intent.getExtras().containsKey(AppConstants.OFFLINE_ISSUE_FOUND)) {
                             isIssueFoundInSync = intent.getExtras().getBoolean(AppConstants.OFFLINE_ISSUE_FOUND);
                         }
 
                         boolean isUploadImagesComplete = false;
-                        if (intent.getExtras().containsKey(AppConstants.OFFLINE_UPLOAD_IMAGE_COMPLETE)){
+                        if (intent.getExtras().containsKey(AppConstants.OFFLINE_UPLOAD_IMAGE_COMPLETE)) {
                             isUploadImagesComplete = intent.getExtras().getBoolean(AppConstants.OFFLINE_UPLOAD_IMAGE_COMPLETE, false);
                         }
 
                         boolean showImageUploadToast = false;
-                        if (intent.getExtras().containsKey(AppConstants.OFFLINE_UPLOAD_IMAGE_SHOW_TOAST)){
+                        if (intent.getExtras().containsKey(AppConstants.OFFLINE_UPLOAD_IMAGE_SHOW_TOAST)) {
                             showImageUploadToast = intent.getExtras().getBoolean(AppConstants.OFFLINE_UPLOAD_IMAGE_SHOW_TOAST, false);
                         }
 
-                        if (isUploadImagesComplete){
+                        if (isUploadImagesComplete) {
 
-                            if (isOfflineSyncServiceIsInProgress()){
+                            if (isOfflineSyncServiceIsInProgress()) {
                                 stopOfflineSyncService();
                             }
 
-                            if (isIssueFoundInSync){
+                            if (isIssueFoundInSync) {
                                 Toast.makeText(HomeScreenActivity.this, getResources().getString(R.string.sync_error), Toast.LENGTH_SHORT).show();
                             } else {
-                                if (isSingOut){
+                                if (isSingOut) {
                                     AlertDialogMessage alertDialogMessage = new AlertDialogMessage();
                                     alertDialogMessage.showAlertTwoButtonAlert(activity, getResources().getString(R.string.alert_you_want_to_signOut), getResources().getString(R.string.yes), getResources().getString(R.string.no), false);
                                     alertDialogMessage.setAlertDialogOkListener(new AlertDialogSignOutListener());
@@ -1185,16 +1218,16 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
                                 Toast.makeText(HomeScreenActivity.this, getResources().getString(R.string.sync_done), Toast.LENGTH_SHORT).show();
                             }
                         } else {
-                            if (showImageUploadToast){
+                            if (showImageUploadToast) {
                                 Toast.makeText(HomeScreenActivity.this, getResources().getString(R.string.sync_image_in_progress), Toast.LENGTH_SHORT).show();
                             }
                         }
 
-                        if (patientQueueFragment != null && !isSingOut){
-                            if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.DOCTOR)){
+                        if (patientQueueFragment != null && !isSingOut) {
+                            if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.DOCTOR)) {
                                 ((PatientQueueFragment) patientQueueFragment).setTabContent(AppConstants.DOCTOR_PRESENT);
                             }
-                            if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.RECEPTION)){
+                            if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.RECEPTION)) {
                                 ((PatientQueueFragment) patientQueueFragment).setTabContent(AppConstants.RECEPTION_PRESENT);
                             }
                             ((PatientQueueFragment) patientQueueFragment).setTabContent(AppConstants.EXAMINED);
@@ -1202,14 +1235,14 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
                     }
 
 
-                } else if (intent.getAction().equals(AppConstants.OFFLINE_STATUS_ACTION_NO_DATA)){
-                    if (isSingOut){
+                } else if (intent.getAction().equals(AppConstants.OFFLINE_STATUS_ACTION_NO_DATA)) {
+                    if (isSingOut) {
                         callLogout(null, false);
                     }
                     isSingOut = false;
                     Toast.makeText(HomeScreenActivity.this, getResources().getString(R.string.sync_no_data), Toast.LENGTH_SHORT).show();
 
-                } else if (intent.getAction().equals(AppConstants.OFFLINE_STATUS_ACTION_ISSUE)){
+                } else if (intent.getAction().equals(AppConstants.OFFLINE_STATUS_ACTION_ISSUE)) {
 
                     Toast.makeText(HomeScreenActivity.this, getResources().getString(R.string.sync_error), Toast.LENGTH_SHORT).show();
 
@@ -1224,23 +1257,25 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
 
         isAfterLocationDialog = false;
 
-        if (dlDrawerLayout.isDrawerOpen(Gravity.LEFT)){
+        if (dlDrawerLayout.isDrawerOpen(Gravity.LEFT)) {
             dlDrawerLayout.closeDrawer(Gravity.LEFT);
         } else {
-            int backStackEntryCount = getSupportFragmentManager().getBackStackEntryCount();
-            if (backStackEntryCount == 0){
+           // int backStackEntryCount = getSupportFragmentManager().getBackStackEntryCount();
+            int backStackEntryCount = getFragmentManager().getBackStackEntryCount();
+            if (backStackEntryCount == 0) {
                 AlertDialogMessage alertDialogMessage = new AlertDialogMessage();
                 alertDialogMessage.showAlertTwoButtonAlert(activity, getResources().getString(R.string.alert_message_confirm_exit), getResources().getString(R.string.yes), getResources().getString(R.string.no), false);
                 alertDialogMessage.setAlertDialogOkListener(new AlertExitOkButtonListener());
             } else {
 
-                FragmentManager.BackStackEntry backEntry = getSupportFragmentManager().getBackStackEntryAt(getSupportFragmentManager().getBackStackEntryCount() - 1);
+                /*FragmentManager.BackStackEntry backEntry = getSupportFragmentManager().getBackStackEntryAt(getSupportFragmentManager().getBackStackEntryCount() - 1);*/
+                FragmentManager.BackStackEntry backEntry = (FragmentManager.BackStackEntry) getFragmentManager().getBackStackEntryAt(getFragmentManager().getBackStackEntryCount() - 1);
                 String str = backEntry.getName();
                 Logger.debug("Str1-" + str);
 
 
-                if (str != null){
-                    if (str.equalsIgnoreCase(FragmentConstant.FRAGMENT_PATIENT_QUEUE)){
+                if (str != null) {
+                    if (str.equalsIgnoreCase(FragmentConstant.FRAGMENT_PATIENT_QUEUE)) {
 
                         AlertDialogMessage alertDialogMessage = new AlertDialogMessage();
                         alertDialogMessage.showAlertTwoButtonAlert(activity, getResources().getString(R.string.alert_message_confirm_exit), getResources().getString(R.string.yes), getResources().getString(R.string.no), false);
@@ -1248,10 +1283,10 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
 
                         //super.onBackPressed();
                     } else {
-                        if (str.equalsIgnoreCase(FragmentConstant.FRAGMENT_FAMILY_QUEUE)){
+                        if (str.equalsIgnoreCase(FragmentConstant.FRAGMENT_FAMILY_QUEUE)) {
                             tlToolBar.setVisibility(View.VISIBLE);
                             tlToolBarForFamilyQueue.setVisibility(View.GONE);
-                            setSupportActionBar(tlToolBar);
+                           // setSupportActionBar(tlToolBar);
                         }
                         super.onBackPressed();
                     }
@@ -1269,7 +1304,8 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
         @Override
         public void onAlertDialogOkButtonListener() {
             ApplicationController.clearActivityStack();
-            getSupportFragmentManager().popBackStack();
+          //  getSupportFragmentManager().popBackStack();
+            getFragmentManager().popBackStack();
             finish();
 
         }
@@ -1296,6 +1332,16 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
 
     @Override
     public void onConnected(Bundle connectionHint) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient);
         if (mLastLocation != null){
@@ -1441,7 +1487,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
     public void showPatientQueueFragment() {
         tlToolBar.setVisibility(View.VISIBLE);
         tlToolBarForFamilyQueue.setVisibility(View.GONE);
-        setSupportActionBar(tlToolBar);
+     //   setSupportActionBar(tlToolBar);
         pushFragments(patientQueueFragment, false, true, FragmentConstant.FRAGMENT_PATIENT_QUEUE);
     }
 
@@ -1457,7 +1503,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
         }
 
 
-        setSupportActionBar(tlToolBarForFamilyQueue);
+    //    setSupportActionBar(tlToolBarForFamilyQueue);
         if (!familyQueueFragment.isVisible()){
             familyQueueFragment.setArguments(bundle);
         }
@@ -1603,7 +1649,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
 
         @Override
         public void onDrawerOpened(View drawerView) {
-            if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.DOCTOR)){
+            /*if (appPreferenceManager.getRoleName().equalsIgnoreCase(AppConstants.DOCTOR)){
                 if (NetworkUtils.isNetworkAvailable(activity)){
                     UserHealthCareFirmMapDao healthCareFirmDao = new UserHealthCareFirmMapDao(dhbDao.getDb());
                     ArrayList<UserHealthCareFirmMap> healthCareFirms = healthCareFirmDao.getUserHealthcareFirmMapWithUserId(appPreferenceManager.getUserId());
@@ -1630,7 +1676,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
                     setHospitalList(healthCareFirms);
                     setFooterCounter(eximinedPatientCount, registeredPatientCount);
                 }
-            }
+            }*/
         }
 
         @Override
@@ -1645,7 +1691,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
 
     }
 
-    private class HospitalWisePatientCountApiCallResult implements ApiCallAsyncTaskDelegate {
+   /* private class HospitalWisePatientCountApiCallResult implements ApiCallAsyncTaskDelegate {
         @Override
         public void apiCallResult(String json, int statusCode) throws JSONException {
             responseParser = new ResponseParser(activity);
@@ -1691,7 +1737,7 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
 
         }
 
-    }
+    }*/
 
     private class AlertDialogSignOutListener implements AlertDialogMessage.AlertDialogOkListener {
         @Override
@@ -1821,6 +1867,6 @@ public class HomeScreenActivity extends AbstractActivity/* implements GoogleApiC
         });
 
         builder.create().show();
-    }*/
+    }
 
-        }
+}

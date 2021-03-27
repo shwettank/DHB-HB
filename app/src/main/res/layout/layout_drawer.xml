@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+    <!--<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/drawer"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">-->
+
+    <LinearLayout
+        android:id="@+id/ln_drawer_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"></LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlt_menu_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_gravity="start">
+
+        <ListView
+            android:id="@+id/lv_drawer_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:choiceMode="singleChoice"
+            android:divider="@color/drawer_divider_line"
+            android:layout_above="@+id/rlt_layout_drawer"
+            android:dividerHeight="0.1dp"
+            />
+
+        <RelativeLayout
+            android:id="@+id/rlt_layout_drawer"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:background="@drawable/left_drawer_count_background"
+            android:paddingBottom="105dp"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:id="@+id/rlt_patient_registered"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp">
+
+                <RelativeLayout
+                    android:id="@+id/rlt_patient_registered_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/dp_10">
+
+                    <TextView
+                        android:id="@+id/txt_registered_patient"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical|left"
+                        android:text="Patients registered using DHB"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/dp_22" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlt_patient_registered_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rlt_patient_registered_text"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txt_registered_count1"
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:background="@drawable/selector_patient_queue_digit_bg"
+                        android:duplicateParentState="true"
+                        android:gravity="center"
+                        android:text="@string/zero"
+                        android:textColor="@color/selector_patient_queue_digit_text"
+                        android:textSize="@dimen/dp_20" />
+
+                    <TextView
+                        android:id="@+id/txt_registered_count2"
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:layout_toRightOf="@+id/txt_registered_count1"
+                        android:background="@drawable/selector_patient_queue_digit_bg"
+                        android:duplicateParentState="true"
+                        android:gravity="center"
+                        android:text="@string/zero"
+                        android:textColor="@color/selector_patient_queue_digit_text"
+                        android:textSize="@dimen/dp_20" />
+
+                    <TextView
+                        android:id="@+id/txt_registered_count3"
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:layout_toRightOf="@+id/txt_registered_count2"
+                        android:background="@drawable/selector_patient_queue_digit_bg"
+                        android:duplicateParentState="true"
+                        android:gravity="center"
+                        android:text="@string/zero"
+                        android:textColor="@color/selector_patient_queue_digit_text"
+                        android:textSize="@dimen/dp_20" />
+
+                    <TextView
+                        android:id="@+id/txt_registered_count4"
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:layout_toRightOf="@+id/txt_registered_count3"
+                        android:background="@drawable/selector_patient_queue_digit_bg"
+                        android:duplicateParentState="true"
+                        android:gravity="center"
+                        android:text="@string/zero"
+                        android:textColor="@color/selector_patient_queue_digit_text"
+                        android:textSize="@dimen/dp_20" />
+
+                    <TextView
+                        android:id="@+id/txt_registered_count5"
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:layout_toRightOf="@+id/txt_registered_count4"
+                        android:background="@drawable/selector_patient_queue_digit_bg"
+                        android:duplicateParentState="true"
+                        android:gravity="center"
+                        android:text="@string/zero"
+                        android:textColor="@color/selector_patient_queue_digit_text"
+                        android:textSize="@dimen/dp_20" />
+
+                    <TextView
+                        android:id="@+id/txt_registered_count6"
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:layout_toRightOf="@+id/txt_registered_count5"
+                        android:background="@drawable/selector_patient_queue_digit_bg"
+                        android:duplicateParentState="true"
+                        android:gravity="center"
+                        android:text="@string/zero"
+                        android:textColor="@color/selector_patient_queue_digit_text"
+                        android:textSize="@dimen/dp_20" />
+
+                    <TextView
+                        android:id="@+id/txt_registered_count7"
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:layout_toRightOf="@+id/txt_registered_count6"
+                        android:background="@drawable/selector_patient_queue_digit_bg"
+                        android:duplicateParentState="true"
+                        android:gravity="center"
+                        android:text="@string/zero"
+                        android:textColor="@color/selector_patient_queue_digit_text"
+                        android:textSize="@dimen/dp_20" />
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlt_patient_examined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rlt_patient_registered"
+                android:paddingBottom="10dp">
+
+                <RelativeLayout
+                    android:id="@+id/rlt_patient_examined_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/dp_10">
+
+                    <TextView
+                        android:id="@+id/txt_examine_patient"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical|left"
+                        android:text="Patients examined using DHB"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/dp_22" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlt_patient_examined_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rlt_patient_examined_text"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/txt_examined_count1"
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:background="@drawable/selector_patient_queue_digit_bg"
+                        android:duplicateParentState="true"
+                        android:gravity="center"
+                        android:text="@string/zero"
+                        android:textColor="@color/selector_patient_queue_digit_text"
+                        android:textSize="@dimen/dp_20" />
+
+                    <TextView
+                        android:id="@+id/txt_examined_count2"
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:layout_toRightOf="@+id/txt_examined_count1"
+                        android:background="@drawable/selector_patient_queue_digit_bg"
+                        android:duplicateParentState="true"
+                        android:gravity="center"
+                        android:text="@string/zero"
+                        android:textColor="@color/selector_patient_queue_digit_text"
+                        android:textSize="@dimen/dp_20" />
+
+                    <TextView
+                        android:id="@+id/txt_examined_count3"
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:layout_toRightOf="@+id/txt_examined_count2"
+                        android:background="@drawable/selector_patient_queue_digit_bg"
+                        android:duplicateParentState="true"
+                        android:gravity="center"
+                        android:text="@string/zero"
+                        android:textColor="@color/selector_patient_queue_digit_text"
+                        android:textSize="@dimen/dp_20" />
+
+                    <TextView
+                        android:id="@+id/txt_examined_count4"
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:layout_toRightOf="@+id/txt_examined_count3"
+                        android:background="@drawable/selector_patient_queue_digit_bg"
+                        android:duplicateParentState="true"
+                        android:gravity="center"
+                        android:text="@string/zero"
+                        android:textColor="@color/selector_patient_queue_digit_text"
+                        android:textSize="@dimen/dp_20" />
+
+                    <TextView
+                        android:id="@+id/txt_examined_count5"
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:layout_toRightOf="@+id/txt_examined_count4"
+                        android:background="@drawable/selector_patient_queue_digit_bg"
+                        android:duplicateParentState="true"
+                        android:gravity="center"
+                        android:text="@string/zero"
+                        android:textColor="@color/selector_patient_queue_digit_text"
+                        android:textSize="@dimen/dp_20" />
+
+                    <TextView
+                        android:id="@+id/txt_examined_count6"
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:layout_toRightOf="@+id/txt_examined_count5"
+                        android:background="@drawable/selector_patient_queue_digit_bg"
+                        android:duplicateParentState="true"
+                        android:gravity="center"
+                        android:text="@string/zero"
+                        android:textColor="@color/selector_patient_queue_digit_text"
+                        android:textSize="@dimen/dp_20" />
+
+                    <TextView
+                        android:id="@+id/txt_examined_count7"
+                        android:layout_width="@dimen/dp_40"
+                        android:layout_height="@dimen/dp_40"
+                        android:layout_toRightOf="@+id/txt_examined_count6"
+                        android:background="@drawable/selector_patient_queue_digit_bg"
+                        android:duplicateParentState="true"
+                        android:gravity="center"
+                        android:text="@string/zero"
+                        android:textColor="@color/selector_patient_queue_digit_text"
+                        android:textSize="@dimen/dp_20" />
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

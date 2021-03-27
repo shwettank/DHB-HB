@@ -1,0 +1,37 @@
+package com.dhb.utils;
+
+public interface FragmentConstant {
+    public static final String FRAGMENT_SETTING = "FRAGMENT_SETTING";
+
+    public static final String FRAGMENT_PATIENT_QUEUE = "FRAGMENT_PATIENT_QUEUE";
+
+    public static final String FRAGMENT_ADD_IMAGE = "FRAGMENT_ADD_IMAGE";
+
+    public static final String FRAGMENT_ADD_PRESCRIPTION = "FRAGMENT_ADD_PRESCRIPTION";
+
+    public static final String FRAGMENT_ADD_LAB_REPORTS = "FRAGMENT_ADD_LAB_REPORTS";
+
+    public static final String FRAGMENT_PROFILE_AND_SCAN = "FRAGMENT_PROFILE_AND_SCAN";
+
+    public static final String FRAGMENT_REGISTRATION = "FRAGMENT_REGISTRATION";
+
+    public static final String FRAGMENT_VIEW_PATIENT_DETAILS = "FRAGMENT_VIEW_PATIENT_DETAILS";
+
+    public static final String FRAGMENT_SCAN_DOCUMENTS_LIST = "FRAGMENT_SCAN_DOCUMENTS_LIST";
+
+    public static final String FRAGMENT_FAMILY_QUEUE = "FRAGMENT_FAMILY_QUEUE";
+
+    public static final String FRAGMENT_PATIENT_ALLERGY = "FRAGMENT_PATIENT_ALLERGY";
+
+    public static final String FRAGMENT_PATIENT_COMPLAINT = "FRAGMENT_PATIENT_COMPLAINT";
+
+    public static final String FRAGMENT_PATIENT_COMPLAINT_TYPE = "FRAGMENT_PATIENT_COMPLAINT_TYPE";
+
+    public static final String FRAGMENT_RECEPTION_CHIEF_COMPLAINT = "FRAGMENT_RECEPTION_CHIEF_COMPLAINT";
+
+    public static final String FRAGMENT_GENERATE_PATIENT_BILLING = "FRAGMENT_GENERATE_PATIENT_BILLING";
+
+    public static final String FRAGMENT_PATIENT_BILLING = "FRAGMENT_PATIENT_BILLING";
+
+
+}

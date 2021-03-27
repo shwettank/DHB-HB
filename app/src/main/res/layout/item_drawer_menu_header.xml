@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/header_blue_color"
+    android:gravity="center_vertical"
+    android:paddingBottom="@dimen/dp_50"
+    android:paddingLeft="@dimen/dp_20"
+    android:paddingRight="@dimen/dp_20"
+    android:paddingTop="@dimen/dp_45">
+
+    <LinearLayout
+        android:id="@+id/lay_img_user_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp_45">
+
+        <com.dhb.customview.RoundedImageView
+            android:id="@+id/img_user_picture"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="@dimen/dp_120"
+            android:layout_centerVertical="true"
+            android:background="@drawable/default_profile_icon" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vw_gap"
+        android:layout_width="@dimen/dp_30"
+        android:layout_centerVertical="true"
+        android:layout_height="@dimen/dp_30"
+        android:layout_toRightOf="@+id/lay_img_user_picture" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/vw_gap"
+        android:paddingTop="@dimen/dp_45"
+        android:gravity="center_vertical|left"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_text"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textSize="@dimen/dp_24" />
+
+        <TextView
+            android:id="@+id/txt_user_role_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_text"
+            android:textSize="@dimen/dp_19" />
+
+        <TextView
+            android:id="@+id/txt_user_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_text"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textSize="@dimen/dp_19" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

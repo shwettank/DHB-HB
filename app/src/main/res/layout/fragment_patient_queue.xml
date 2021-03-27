@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/patient_queue_bg">
+
+    <TextView
+        android:id="@+id/txt_white_line"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_alignParentTop="true"
+        android:background="@color/white_text"
+
+        />
+
+    <View
+        android:id="@+id/vw_center_horizontal"
+        android:layout_width="0.1dp"
+        android:layout_height="0.1dp"
+        android:layout_centerHorizontal="true" />
+
+    <!-- <Button
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_toLeftOf="@+id/vw_center_horizontal"
+         android:background="@color/header_blue_color"
+         android:textColor="@color/white_text"
+         android:textSize="20dp" />-->
+
+
+    <RelativeLayout
+        android:id="@+id/rlt_layout_present"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp_80"
+        android:layout_below="@+id/txt_white_line"
+        android:layout_toLeftOf="@+id/vw_center_horizontal"
+        android:background="@drawable/selector_patient_queue_tab"
+        android:gravity="center">
+
+
+        <TextView
+            android:id="@+id/txt_present"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/txt_present_count1"
+            android:layout_alignTop="@+id/txt_present_count1"
+            android:layout_centerVertical="true"
+            android:duplicateParentState="true"
+            android:gravity="center"
+            android:text="@string/present"
+            android:textColor="@color/selector_patient_queue_tab_text"
+            android:textSize="@dimen/dp_25" />
+
+        <TextView
+            android:id="@+id/txt_present_hindi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_present"
+            android:duplicateParentState="true"
+            android:gravity="center"
+            android:text="@string/present_hindi"
+            android:textColor="@color/selector_patient_queue_tab_text"
+            android:textSize="@dimen/dp_25" />
+
+        <TextView
+            android:id="@+id/txt_present_count1"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_toRightOf="@+id/txt_present"
+            android:background="@drawable/selector_patient_queue_digit_bg"
+            android:duplicateParentState="true"
+            android:gravity="center"
+            android:text="@string/zero"
+            android:textColor="@color/selector_patient_queue_digit_text"
+            android:textSize="@dimen/dp_20" />
+
+        <TextView
+            android:id="@+id/txt_present_count2"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_toRightOf="@+id/txt_present_count1"
+            android:background="@drawable/selector_patient_queue_digit_bg"
+            android:duplicateParentState="true"
+            android:gravity="center"
+            android:text="@string/zero"
+            android:textColor="@color/selector_patient_queue_digit_text"
+            android:textSize="@dimen/dp_20" />
+
+        <TextView
+            android:id="@+id/txt_present_count3"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_toRightOf="@+id/txt_present_count2"
+            android:background="@drawable/selector_patient_queue_digit_bg"
+            android:duplicateParentState="true"
+            android:gravity="center"
+            android:text="@string/zero"
+            android:textColor="@color/selector_patient_queue_digit_text"
+            android:textSize="@dimen/dp_20" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rlt_layout_examine"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/dp_80"
+        android:layout_below="@+id/txt_white_line"
+        android:layout_toRightOf="@+id/vw_center_horizontal"
+        android:background="@drawable/selector_patient_queue_tab"
+        android:gravity="center">
+
+
+        <TextView
+            android:id="@+id/txt_examine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/txt_examine_count1"
+            android:layout_alignTop="@+id/txt_examine_count1"
+            android:layout_centerVertical="true"
+            android:duplicateParentState="true"
+            android:gravity="center"
+            android:text="@string/examined"
+            android:textColor="@color/selector_patient_queue_tab_text"
+            android:textSize="@dimen/dp_25" />
+        <TextView
+            android:id="@+id/txt_examine_hindi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_examine"
+            android:duplicateParentState="true"
+            android:gravity="center"
+            android:text="@string/examined_hindi"
+            android:textColor="@color/selector_patient_queue_tab_text"
+            android:textSize="@dimen/dp_25" />
+
+        <TextView
+            android:id="@+id/txt_examine_count1"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_toRightOf="@+id/txt_examine"
+            android:background="@drawable/selector_patient_queue_digit_bg"
+            android:duplicateParentState="true"
+            android:gravity="center"
+            android:text="@string/zero"
+            android:textColor="@color/selector_patient_queue_digit_text"
+            android:textSize="@dimen/dp_20" />
+
+        <TextView
+            android:id="@+id/txt_examine_count2"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_toRightOf="@+id/txt_examine_count1"
+            android:background="@drawable/selector_patient_queue_digit_bg"
+            android:duplicateParentState="true"
+            android:gravity="center"
+            android:text="@string/zero"
+            android:textColor="@color/selector_patient_queue_digit_text"
+            android:textSize="@dimen/dp_20" />
+
+        <TextView
+            android:id="@+id/txt_examine_count3"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_toRightOf="@+id/txt_examine_count2"
+            android:background="@drawable/selector_patient_queue_digit_bg"
+            android:duplicateParentState="true"
+            android:gravity="center"
+            android:text="@string/zero"
+            android:textColor="@color/selector_patient_queue_digit_text"
+            android:textSize="@dimen/dp_20" />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/txt_date"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlt_layout_present"
+        android:layout_marginRight="@dimen/dp_20"
+        android:gravity="right"
+        android:padding="@dimen/dp_10"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/dp_20" />
+
+    <com.dhb.customview.CustomSwipeRefreshLayout
+        android:id="@+id/swipe_view_first_tab"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/txt_date">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_first_tab_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:divider="@null"
+            android:dividerHeight="@dimen/dp_10">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </com.dhb.customview.CustomSwipeRefreshLayout>
+
+    <com.dhb.customview.CustomSwipeRefreshLayout
+        android:id="@+id/swipe_view_second_tab"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/txt_date">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_second_tab_list"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/txt_date"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:divider="@null"
+            android:dividerHeight="@dimen/dp_10">
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </com.dhb.customview.CustomSwipeRefreshLayout>
+
+    <TextView
+        android:id="@+id/txt_no_records_first_tab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/no_record_in_queue"
+        android:textColor="@color/black_text"
+        android:textSize="@dimen/dp_25"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/txt_no_records_second_tab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/no_record_in_queue"
+        android:textColor="@color/black_text"
+        android:textSize="@dimen/dp_25"
+        android:visibility="invisible" />
+
+</RelativeLayout>

@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lyt_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rlt_container"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:id="@+id/rlt_layout_patient_queue_register_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_5"
+            android:background="@drawable/parient_queue_row_bg"
+            android:padding="@dimen/dp_10"
+            android:visibility="visible">
+
+
+            <ImageView
+                android:id="@+id/img_serial_no_bg_register_user"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_120"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_5"
+                android:background="@drawable/number_count_icon" />
+
+            <LinearLayout
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_serial_no_bg_register_user"
+                android:layout_alignTop="@+id/img_serial_no_bg_register_user"
+                android:layout_marginRight="@dimen/dp_5"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_serial_no_register_user"
+                    android:layout_width="@dimen/dp_100"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:shadowColor="@color/color_text_grey"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="1"
+                    android:textColor="@color/faint_blue"
+                    android:textSize="@dimen/dp_30"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txt_appointment_time_register_user"
+                    android:layout_width="@dimen/dp_100"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:shadowColor="@color/color_text_grey"
+                    android:shadowDx="0"
+                    android:shadowDy="1"
+                    android:shadowRadius="1"
+                    android:textColor="@color/faint_blue"
+                    android:textSize="@dimen/dp_14"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+            <!-- <TextView
+                 android:id="@+id/txt_serial_no_register_user"
+                 android:layout_width="@dimen/dp_100"
+                 android:layout_height="@dimen/dp_120"
+                 android:layout_marginBottom="@dimen/dp_10"
+                 android:layout_marginRight="@dimen/dp_5"
+                 android:background="@drawable/number_count_icon"
+                 android:gravity="center"
+                 android:shadowColor="@color/color_text_grey"
+                 android:shadowDx="0"
+                 android:shadowDy="1"
+                 android:shadowRadius="1"
+                 android:textColor="@color/faint_blue"
+                 android:textSize="@dimen/dp_30"
+                 android:textStyle="bold" />-->
+
+            <com.dhb.customview.RoundedCornerRectangleImageView
+                android:id="@+id/img_profile_pic_register_user"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_100"
+                android:layout_alignTop="@+id/img_serial_no_bg_register_user"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_toRightOf="@+id/img_serial_no_bg_register_user"
+                android:gravity="center"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/txt_name_register_user"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/img_serial_no_bg_register_user"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_marginTop="-5dp"
+                android:layout_toLeftOf="@+id/ibtn_view_details_register_user"
+                android:layout_toRightOf="@+id/img_profile_pic_register_user"
+                android:ellipsize="end"
+                android:gravity="top"
+                android:singleLine="true"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/dp_25" />
+
+            <TextView
+                android:id="@+id/txt_age_register_user"
+                android:layout_width="@dimen/dp_170"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_name_register_user"
+                android:layout_toRightOf="@+id/img_profile_pic_register_user"
+                android:drawableLeft="@drawable/profile_icon_black"
+                android:drawablePadding="@dimen/dp_10"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/dp_18" />
+
+            <TextView
+                android:id="@+id/txt_gender_register_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_name_register_user"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_toRightOf="@+id/txt_age_register_user"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/dp_18" />
+
+            <TextView
+                android:id="@+id/txt_mobile_register_user"
+                android:layout_width="@dimen/dp_170"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_age_register_user"
+                android:layout_toRightOf="@+id/img_profile_pic_register_user"
+                android:drawableLeft="@drawable/phone_icon1_black"
+                android:drawablePadding="@dimen/dp_10"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/dp_18" />
+
+            <TextView
+                android:id="@+id/txt_time_register_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_age_register_user"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_toRightOf="@+id/txt_mobile_register_user"
+                android:drawableLeft="@drawable/clock_icon_black"
+                android:drawablePadding="@dimen/dp_10"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/dp_18" />
+
+
+            <TextView
+                android:id="@+id/txt_blood_group_register_user"
+                android:layout_width="@dimen/dp_70"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_mobile_register_user"
+                android:layout_toRightOf="@+id/img_profile_pic_register_user"
+                android:drawableLeft="@drawable/blood_group_icon_red"
+                android:drawablePadding="@dimen/dp_10"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/dp_18" />
+
+            <TextView
+                android:id="@+id/txt_visit_reason_register_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_mobile_register_user"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_toRightOf="@+id/txt_blood_group_register_user"
+                android:drawableLeft="@drawable/complaint_icon_black"
+                android:drawablePadding="@dimen/dp_10"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/dp_18" />
+            />
+
+            <TextView
+                android:id="@+id/txt_chief_complaint_register_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_HIN_register_user"
+                android:layout_toRightOf="@+id/img_profile_pic_register_user"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/dp_18" />
+
+            <TextView
+                android:id="@+id/txt_HIN_register_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_blood_group_register_user"
+                android:layout_toRightOf="@+id/img_profile_pic_register_user"
+                android:text="HIN: "
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/dp_18" />
+
+            <TextView
+                android:id="@+id/txt_hospital_id_register_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_chief_complaint_register_user"
+                android:layout_toRightOf="@+id/img_profile_pic_register_user"
+                android:text="Hospital ID - "
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/dp_18"
+                android:visibility="invisible" />
+
+            <ImageButton
+                android:id="@+id/ibtn_view_details_register_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/img_serial_no_bg_register_user"
+                android:background="@android:color/transparent"
+                android:paddingBottom="@dimen/dp_20"
+                android:paddingLeft="@dimen/dp_30"
+                android:paddingRight="@dimen/dp_5"
+                android:paddingTop="@dimen/dp_2"
+                android:src="@drawable/selector_patient_ribbon_menu" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlt_layout_patient_queue_unregister_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_5"
+            android:background="@drawable/parient_queue_row_bg_for_unregister"
+            android:padding="@dimen/dp_10"
+            android:visibility="invisible">
+
+            <ImageView
+                android:id="@+id/img_serial_no_bg_unregister_user"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_120"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_5"
+                android:background="@drawable/number_count_icon" />
+
+            <TextView
+                android:id="@+id/txt_serial_no_unregister_user"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/txt_appointment_time_unregister_user"
+                android:layout_marginRight="@dimen/dp_5"
+                android:gravity="center"
+                android:shadowColor="@color/color_text_grey"
+                android:shadowDx="0"
+                android:shadowDy="1"
+                android:shadowRadius="1"
+                android:textColor="@color/faint_pink"
+                android:textSize="@dimen/dp_30"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_appointment_time_unregister_user"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_serial_no_bg_unregister_user"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_5"
+                android:gravity="bottom|center_horizontal"
+                android:paddingBottom="@dimen/dp_10"
+                android:shadowColor="@color/color_text_grey"
+                android:shadowDx="0"
+                android:shadowDy="1"
+                android:shadowRadius="1"
+                android:textColor="@color/faint_pink"
+                android:textSize="@dimen/dp_14"
+                android:textStyle="bold" />
+
+
+            <com.dhb.customview.RoundedCornerRectangleImageView
+                android:id="@+id/img_profile_pic_unregister_user"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_100"
+                android:layout_alignTop="@+id/img_serial_no_bg_unregister_user"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_toRightOf="@+id/img_serial_no_bg_unregister_user"
+                android:gravity="center"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/txt_name_unregister_user"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/img_serial_no_bg_unregister_user"
+                android:layout_marginTop="-5dp"
+                android:layout_toLeftOf="@+id/ibtn_view_details_unregister_user"
+                android:layout_toRightOf="@+id/img_profile_pic_unregister_user"
+                android:ellipsize="end"
+                android:gravity="top"
+                android:singleLine="true"
+                android:text="@string/non_register"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/dp_25" />
+
+
+            <TextView
+                android:id="@+id/txt_mobile_unregister_user"
+                android:layout_width="@dimen/dp_170"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_name_unregister_user"
+                android:layout_toRightOf="@+id/img_profile_pic_unregister_user"
+                android:drawableLeft="@drawable/phone_icon_white"
+                android:drawablePadding="@dimen/dp_10"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/dp_18" />
+
+            <TextView
+                android:id="@+id/txt_time_unregister_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_name_unregister_user"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_toRightOf="@+id/txt_mobile_unregister_user"
+                android:drawableLeft="@drawable/clock_icon_white"
+                android:drawablePadding="@dimen/dp_10"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/dp_18" />
+
+
+            <TextView
+                android:id="@+id/txt_blood_group_unregister_user"
+                android:layout_width="@dimen/dp_70"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_mobile_unregister_user"
+                android:layout_toRightOf="@+id/img_profile_pic_unregister_user"
+                android:drawableLeft="@drawable/blood_group_icon_red"
+                android:drawablePadding="@dimen/dp_10"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/dp_18"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/txt_visit_reason_unregister_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_mobile_unregister_user"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_toRightOf="@+id/txt_blood_group_unregister_user"
+                android:drawableLeft="@drawable/clock_icon_black"
+                android:drawablePadding="@dimen/dp_10"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/dp_18"
+                android:visibility="invisible" />
+            />
+
+            <TextView
+                android:id="@+id/txt_chief_complaint_unregister_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_HIN_unregister_user"
+                android:layout_toRightOf="@+id/img_profile_pic_unregister_user"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/dp_18"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/txt_HIN_unregister_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_blood_group_unregister_user"
+                android:layout_toRightOf="@+id/img_profile_pic_unregister_user"
+                android:text="HIN : "
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/dp_18"
+                android:visibility="invisible" />
+
+
+            <TextView
+                android:id="@+id/txt_hospital_id_unregister_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_chief_complaint_unregister_user"
+                android:layout_toRightOf="@+id/img_profile_pic_unregister_user"
+                android:text="Hospital ID - "
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/dp_18"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/txt_blank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_hospital_id_unregister_user"
+                android:layout_toRightOf="@+id/img_profile_pic_unregister_user"
+                android:text="HIN : "
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/dp_18"
+                android:visibility="invisible" />
+
+
+            <ImageButton
+                android:id="@+id/ibtn_view_details_unregister_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/img_serial_no_bg_unregister_user"
+                android:background="@android:color/transparent"
+                android:paddingLeft="@dimen/dp_30"
+                android:paddingRight="@dimen/dp_5"
+                android:paddingTop="@dimen/dp_2"
+                android:src="@drawable/selector_patient_ribbon_plus" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlt_layout_patient_queue_family"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_5"
+            android:background="@drawable/parient_queue_row_blue_bg"
+            android:padding="@dimen/dp_10"
+            android:visibility="gone">
+
+
+            <ImageView
+                android:id="@+id/img_serial_no_bg_family"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_120"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_5"
+                android:background="@drawable/number_count_icon" />
+
+            <TextView
+                android:id="@+id/txt_serial_no_family"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/txt_appointment_time_family"
+                android:layout_marginRight="@dimen/dp_5"
+                android:gravity="center"
+                android:shadowColor="@color/color_text_grey"
+                android:shadowDx="0"
+                android:shadowDy="1"
+                android:shadowRadius="1"
+                android:textColor="@color/faint_family_blue"
+                android:textSize="@dimen/dp_30"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_appointment_time_family"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_serial_no_bg_family"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_5"
+                android:gravity="bottom|center_horizontal"
+                android:paddingBottom="@dimen/dp_10"
+                android:shadowColor="@color/color_text_grey"
+                android:shadowDx="0"
+                android:shadowDy="1"
+                android:shadowRadius="1"
+                android:textColor="@color/faint_pink"
+                android:textSize="@dimen/dp_14"
+                android:textStyle="bold" />
+
+
+            <com.dhb.customview.RoundedCornerRectangleImageView
+                android:id="@+id/img_profile_pic_family"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_100"
+                android:layout_alignTop="@+id/img_serial_no_bg_family"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_toRightOf="@+id/img_serial_no_bg_family"
+                android:gravity="center"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/txt_name_family"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/img_serial_no_bg_family"
+                android:layout_marginTop="-5dp"
+                android:layout_toLeftOf="@+id/ibtn_view_details_family"
+                android:layout_toRightOf="@+id/img_profile_pic_family"
+                android:ellipsize="end"
+                android:gravity="top"
+                android:singleLine="true"
+                android:text="@string/family"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/dp_25" />
+
+            <TextView
+                android:id="@+id/txt_family_members_names"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/txt_mobile_family"
+                android:layout_below="@+id/txt_name_family"
+                android:layout_toLeftOf="@+id/ibtn_view_details_family"
+                android:ellipsize="end"
+                android:gravity="top"
+                android:maxLines="3"
+                android:text=""
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/dp_18" />
+
+
+            <TextView
+                android:id="@+id/txt_mobile_family"
+                android:layout_width="@dimen/dp_170"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_family_members_names"
+                android:layout_toRightOf="@+id/img_profile_pic_family"
+                android:drawableLeft="@drawable/phone_icon_white"
+                android:drawablePadding="@dimen/dp_10"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/dp_18" />
+
+            <TextView
+                android:id="@+id/txt_time_family"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_family_members_names"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_toRightOf="@+id/txt_mobile_family"
+                android:drawableLeft="@drawable/clock_icon_white"
+                android:drawablePadding="@dimen/dp_10"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/dp_18" />
+
+
+            <ImageButton
+                android:id="@+id/ibtn_view_details_family"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/img_serial_no_bg_family"
+                android:background="@android:color/transparent"
+                android:paddingLeft="@dimen/dp_30"
+                android:paddingRight="@dimen/dp_5"
+                android:paddingTop="@dimen/dp_2"
+                android:src="@drawable/selector_patient_ribbon_menu" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlt_layout_patient_queue_mr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_5"
+            android:background="@drawable/parient_queue_row_yellow_bg"
+            android:padding="@dimen/dp_10"
+            android:visibility="invisible">
+
+            <ImageView
+                android:id="@+id/img_serial_no_bg_mr"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_120"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_5"
+                android:background="@drawable/number_count_icon" />
+
+            <TextView
+                android:id="@+id/txt_serial_no_mr"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/txt_appointment_time_mr"
+                android:layout_marginRight="@dimen/dp_5"
+                android:gravity="center"
+                android:shadowColor="@color/color_text_grey"
+                android:shadowDx="0"
+                android:shadowDy="1"
+                android:shadowRadius="1"
+                android:textColor="#FFC36E"
+                android:textSize="@dimen/dp_30"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_appointment_time_mr"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_serial_no_bg_mr"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginRight="@dimen/dp_5"
+                android:gravity="bottom|center_horizontal"
+                android:paddingBottom="@dimen/dp_10"
+                android:shadowColor="@color/color_text_grey"
+                android:shadowDx="0"
+                android:shadowDy="1"
+                android:shadowRadius="1"
+                android:textColor="#FFC36E"
+                android:textSize="@dimen/dp_14"
+                android:textStyle="bold" />
+
+
+            <com.dhb.customview.RoundedCornerRectangleImageView
+                android:id="@+id/img_profile_pic_mr"
+                android:layout_width="@dimen/dp_100"
+                android:layout_height="@dimen/dp_100"
+                android:layout_alignTop="@+id/img_serial_no_bg_mr"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_marginRight="@dimen/dp_10"
+                android:layout_toRightOf="@+id/img_serial_no_bg_mr"
+                android:gravity="center"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/txt_name_mr"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/img_serial_no_bg_mr"
+                android:layout_marginTop="-5dp"
+                android:layout_toLeftOf="@+id/ibtn_view_details_mr"
+                android:layout_toRightOf="@+id/img_profile_pic_mr"
+                android:ellipsize="end"
+                android:gravity="top"
+                android:singleLine="true"
+                android:text="@string/medical_representative"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/dp_25" />
+
+            <TextView
+                android:id="@+id/txt_age_mr"
+                android:layout_width="@dimen/dp_170"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_name_mr"
+                android:layout_toRightOf="@+id/img_profile_pic_mr"
+                android:drawableLeft="@drawable/profile_icon_white"
+                android:drawablePadding="@dimen/dp_10"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/dp_18" />
+
+            <TextView
+                android:id="@+id/txt_gender_mr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_name_mr"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_toRightOf="@+id/txt_age_mr"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/dp_18" />
+
+
+            <TextView
+                android:id="@+id/txt_mobile_mr"
+                android:layout_width="@dimen/dp_170"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_age_mr"
+                android:layout_toRightOf="@+id/img_profile_pic_mr"
+                android:drawableLeft="@drawable/phone_icon_white"
+                android:drawablePadding="@dimen/dp_10"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/dp_18" />
+
+            <TextView
+                android:id="@+id/txt_time_mr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_gender_mr"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_toRightOf="@+id/txt_mobile_mr"
+                android:drawableLeft="@drawable/clock_icon_white"
+                android:drawablePadding="@dimen/dp_10"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/dp_18" />
+
+
+            <TextView
+                android:id="@+id/txt_blood_group_mr"
+                android:layout_width="@dimen/dp_70"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_mobile_mr"
+                android:layout_toRightOf="@+id/img_profile_pic_mr"
+                android:drawableLeft="@drawable/blood_group_icon_red"
+                android:drawablePadding="@dimen/dp_10"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/dp_18" />
+
+            <TextView
+                android:id="@+id/txt_visit_reason_mr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_mobile_mr"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_toRightOf="@+id/txt_blood_group_mr"
+                android:drawableLeft="@drawable/clock_icon_white"
+                android:drawablePadding="@dimen/dp_10"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/dp_18"
+                android:visibility="invisible" />
+            />
+
+            <TextView
+                android:id="@+id/txt_chief_complaint_mr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_HIN_mr"
+                android:layout_toRightOf="@+id/img_profile_pic_mr"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/dp_18" />
+
+            <TextView
+                android:id="@+id/txt_HIN_mr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_blood_group_mr"
+                android:layout_toRightOf="@+id/img_profile_pic_mr"
+                android:text="HIN: "
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/dp_18" />
+
+
+            <TextView
+                android:id="@+id/txt_hospital_id_mr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_chief_complaint_mr"
+                android:layout_toRightOf="@+id/img_profile_pic_mr"
+                android:text="Hospital ID - "
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/dp_18"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/txt_blank_mr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_hospital_id_mr"
+                android:layout_toRightOf="@+id/img_profile_pic_mr"
+                android:text="HIN : "
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/dp_18"
+                android:visibility="invisible" />
+
+
+            <ImageButton
+                android:id="@+id/ibtn_view_details_mr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/img_serial_no_bg_mr"
+                android:background="@android:color/transparent"
+                android:paddingLeft="@dimen/dp_30"
+                android:paddingRight="@dimen/dp_5"
+                android:paddingTop="@dimen/dp_2"
+                android:src="@drawable/selector_patient_ribbon_menu_white" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/dp_5"
+        android:layout_marginTop="@dimen/dp_5"
+        android:background="@color/patient_queue_red_color"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="3">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txt_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:clickable="false"
+                android:gravity="center_vertical"
+                android:hapticFeedbackEnabled="true"
+                android:text="@string/no_show"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_undo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/dp_20"
+                android:clickable="false"
+                android:gravity="center"
+                android:text="@string/undo"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_delete_hindi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/txt_delete"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:clickable="false"
+                android:gravity="center_vertical"
+                android:hapticFeedbackEnabled="true"
+                android:text="@string/no_show_hindi"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_undo_hindi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/txt_undo"
+                android:layout_marginRight="@dimen/dp_20"
+                android:clickable="false"
+                android:gravity="center"
+                android:text="@string/undo_hindi"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/dp_5"
+        android:layout_marginTop="@dimen/dp_5"
+        android:background="@color/patient_queue_green_color"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="3">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txt_action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:clickable="false"
+                android:gravity="center_vertical"
+                android:hapticFeedbackEnabled="true"
+                android:text="@string/send_to_doctor"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_undo_action"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:gravity="center"
+                android:text="@string/undo"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_action_hindi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/txt_action"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:clickable="false"
+                android:gravity="center_vertical"
+                android:hapticFeedbackEnabled="true"
+                android:text="@string/send_to_doctor_hindi"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txt_undo_action_hindi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/txt_action"
+                android:layout_marginRight="@dimen/dp_20"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:gravity="center"
+                android:text="@string/undo_hindi"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </LinearLayout>
+</FrameLayout>
